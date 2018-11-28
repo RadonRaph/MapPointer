@@ -2,6 +2,8 @@
 //var b = new point(550, 700, "rgb(0,255,0)", 7, "test", "test");
 //var points = [a, b];
 
+var pointsFile = "assets/points.json";
+
 var menuToggle = false;
 
 function addPoint(e){
@@ -50,4 +52,24 @@ function addPoint(e){
   else
   document.getElementById("formContent").value = "";
 
+}
+
+
+function savePoint() {
+  var newPoint = new point();
+
+  newPoint.x = document.getElementById("formX").value;
+  newPoint.y = document.getElementById("formY").value;
+
+  newPoint.name = document.getElementById("formName").value;
+
+  newPoint.radius = document.getElementById("formRadius").value;
+
+  newPoint.color = document.getElementById("formColor").value;
+
+  newPoint.content = document.getElementById("formContent").value;
+
+  var data = JSON.parse(pointsFile);
+  data.points.push(newPoint);
+  pointsFile = JSON.stringify(data);
 }
