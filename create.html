@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="display.js">
+    </script>
+    <script type="text/javascript" src="create.js">
+    </script>
+  </head>
+  <body onload="initialize();">
+    <canvas id="canvas" width="300" height="300" onmousedown="addPoint(event)"></canvas>
+    <div class="menu" id="menu">
+      <form class="" action="" method="">
+        <label for="name">Nom</label>
+        <input type="text" name="name" value="" id="formName">
+
+        <label for="posX">X</label>
+        <input type="number" name="posX" value="" id="formX">
+        <label for="posY">Y</label>
+        <input type="number" name="posY" value="" id="formY">
+
+        <label for="color">Couleur</label>
+        <input type="color" name="color" value="" id="formColor">
+
+        <label for="radius">Rayon</label>
+        <input type="number" name="radius" value="" id="formRadius">
+
+        <label for="content">Contenu</label>
+        <textarea name="content" rows="8" cols="80" id="formContent"></textarea>
+
+        <button type="button" name="button">Enregistrer</button>
+        <button type="button" name="button" style="background-color: red;" onclick="document.getElementById('menu').style.display = 'none'; menuToggle=false;">Abandonner</button>
+      </form>
+    </div>
+  </body>
+
+</html>
