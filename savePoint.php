@@ -9,8 +9,9 @@ if (isset($_POST['name'])){
 
 
 $points = explode("§", $current);
-//reverse op reverse
-for ($i=0; $i < count($points); $i+1) {
+array_shift($points);
+if (count($points) > 0)
+for ($i=0; $i < count($points); $i++) {
   $params = explode("£", $points[$i]);
   $name = $params[0];
   $x = $params[1];
@@ -18,8 +19,7 @@ for ($i=0; $i < count($points); $i+1) {
   $radius = $params[3];
   $color = $params[4];
   $content = $params[5];
-  print_r($params);
-  echo "<span id='point' style='display: block;>' <span id='name'>".$name."</span><span id='x'>".$x."</span><span id='y'>".$y."</span><span id='radius'>".$radius."</span><span id='color'>".$color."</span><span id='content'>".$content."</span></span>";
+  echo "<div name='point' style='display: none;'> <span id='name'>".$name."</span><span id='x'>".$x."</span><span id='y'>".$y."</span><span id='radius'>".$radius."</span><span id='color'>".$color."</span><span id='content'>".$content."</span></div>";
 }
 
  ?>

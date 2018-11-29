@@ -5,6 +5,9 @@ map.src = mapUrl;
 var canvas;
 var ctx;
 
+
+
+
 class point {
   constructor(x, y, color, radius, name, content) {
     this.x = x;
@@ -20,15 +23,6 @@ var b = new point(550, 700, "#33dd2b", 7, "test", "test");
 var points = [a, b];
 
 function initialize() {
-  const req = new XMLHttpRequest();
-  req.open('GET', 'savePoint.php', true);
-  req.send(null);
-
-// if (req.status === 0) {}
-
-  console.log(req.responseText);
-
-
   canvas = document.getElementById('canvas');
   canvas.width = map.width;
   canvas.height = map.height;
@@ -36,17 +30,50 @@ function initialize() {
   ctx.drawImage(map, 0, 0);
 
   drawPoints();
-
 }
 
-
 function drawPoints() {
+  var pointsElements = document.getElementsByName('point');
+
+  for (var i = 0; i < pointsElements.length; i++) {
+    var pointsParams;
+    pointsParams = pointsElements[i].children;
+    var newPoint = new point();
+    for (var i2 = 0; i2 < pointsParams.length; i2++) {
+      switch (i2) {
+        case 0:
+        newPoint.name = pointsParams[i2].innerHTML;
+          break;
+        case 1:
+          newPoint.x = pointsParams[i2].innerHTML;
+          break;
+        case 2:
+          newPoint.y = pointsParams[i2].innerHTML;
+          break;
+        case 3:
+          newPoint.radius = pointsParams[i2].innerHTML;
+          break;
+        case 4:
+          newPoint.color = pointsParams[i2].innerHTML;
+          break;
+        case 5:
+          newPoint.content = pointsParams[i2].innerHTML;
+          break;
+        default:
+          break;
+      }
+
+    }
+    points.push(newPoint);
+  }
+
   for (var i = 0; i < points.length; i++) {
     ctx.beginPath();
     ctx.arc(points[i].x, points[i].y, points[i].radius,0,2*Math.PI);
     ctx.fillStyle = points[i].color;
     ctx.fill();
-    ctx.font = String(3*points[i].radius) + "px Arial";
+    //ctx.font = String(3*points[i].radius) + "px Arial";
+    ctx.font = "10px Arial";
     ctx.fillText(points[i].name, points[i].x + 2*points[i].radius, points[i].y);
     ctx.stroke();
   }
@@ -68,4 +95,16 @@ function detectPointsHover(e) {
       if (pointCount == 0)
         canvas.style.cursor = "auto";
 
+}
+
+
+var req = new XMLHttpRequest();
+req.open('GET', 'savePoint.php', true);
+req.send(null);
+var reqText;
+req.onreadystatechange = function() { // Call a function when the state changes.
+  if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+      reqText = req.responseText;
+      document.getElementById('points').innerHTML = reqText;
+  }
 }
