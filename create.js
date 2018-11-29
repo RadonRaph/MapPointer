@@ -69,7 +69,16 @@ function savePoint() {
 
   newPoint.content = document.getElementById("formContent").value;
 
-  var data = JSON.parse(pointsFile);
-  data.points.push(newPoint);
-  pointsFile = JSON.stringify(data);
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", 'savePoint.php', true);
+
+  //Send the proper header information along with the request
+  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+  xhr.onreadystatechange = function() { // Call a function when the state changes.
+    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+        // Request finished. Do processing here.
+    }
+  }
+  xhr.send("name=" + newPoint.name + "&x=" + newPoint.x + "&y=" + newPoint.y + "&color=" + newPoint.color + "&radius=" + newPoint.radius + "&content=" + newPoint.content);
 }

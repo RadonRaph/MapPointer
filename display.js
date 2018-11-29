@@ -20,6 +20,15 @@ var b = new point(550, 700, "#33dd2b", 7, "test", "test");
 var points = [a, b];
 
 function initialize() {
+  const req = new XMLHttpRequest();
+  req.open('GET', 'savePoint.php', true);
+  req.send(null);
+
+// if (req.status === 0) {}
+
+  console.log(req.responseText);
+
+
   canvas = document.getElementById('canvas');
   canvas.width = map.width;
   canvas.height = map.height;
