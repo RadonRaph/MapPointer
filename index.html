@@ -6,12 +6,16 @@
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="display.js">
     </script>
-    <script type="text/javascript" src="assets/db.js">
+    <script type="text/javascript" src="info.js">
     </script>
   </head>
   <body onload="initialize();">
-    <canvas id="canvas" width="300" height="300" onmousemove="detectPointsHover(event)"></canvas>
-    <div class="menu">
+    <div id="points"></div>
+    <canvas id="canvas" width="300" height="300" onmousedown="displayPoint(event)" onmousemove="detectPointsHover(event)" onkeydown="close(event)"></canvas>
+    <div class="menu" id="menu">
+      <h1 id="pointName"></h1>
+      <div id="pointContent"></div>
+
     </div>
   </body>
 

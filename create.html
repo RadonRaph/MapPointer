@@ -11,7 +11,7 @@
   </head>
   <body onload="initialize();">
     <div id="points"></div>
-    <canvas id="canvas" width="300" height="300" onmousedown="addPoint(event)" onmousemove="detectPointsHover(event)"></canvas>
+    <canvas id="canvas" width="300" height="300" onmousedown="addPoint(event)" onmousemove="detectPointsHover(event)" onkeydown="close(event)"></canvas>
     <div class="menu" id="menu">
       <form class="" action="" method="">
         <label for="name">Nom</label>
@@ -32,7 +32,7 @@
         <textarea name="content" rows="8" cols="80" id="formContent"></textarea>
 
         <button type="button" name="button" onclick="savePoint()">Enregistrer</button>
-        <button type="button" name="button" style="background-color: red;" onclick="document.getElementById('menu').style.display = 'none'; menuToggle=false;">Abandonner</button>
+        <button type="button" name="button" style="background-color: red;" onclick="menuOpen();">Abandonner</button>
       </form>
     </div>
     <script type="text/javascript">

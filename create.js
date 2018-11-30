@@ -4,16 +4,10 @@
 
 var pointsFile = "assets/points.json";
 
-var menuToggle = false;
+
 
 function addPoint(e){
-  menu = document.getElementById('menu');
-  if (menuToggle == false){
-    menu.style.display = "block";
-    menuToggle = true;
-  }else{
-    return;
-  }
+  menuOpen();
 
   var posX = e.clientX;
   var posY = e.clientY;
@@ -52,6 +46,7 @@ function addPoint(e){
   else
   document.getElementById("formContent").value = "";
 
+
 }
 
 
@@ -77,8 +72,9 @@ function savePoint() {
 
   xhr.onreadystatechange = function() { // Call a function when the state changes.
     if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-        // Request finished. Do processing here.
+          location.reload();
     }
   }
   xhr.send("name=" + newPoint.name + "&x=" + newPoint.x + "&y=" + newPoint.y + "&color=" + newPoint.color + "&radius=" + newPoint.radius + "&content=" + newPoint.content);
+
 }
