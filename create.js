@@ -3,6 +3,56 @@
 //var points = [a, b];
 
 var pointsFile = "assets/points.json";
+var tool = "point";
+var isDrawing = "false";
+
+function changeTool(choosenTool) {
+  if (choosenTool == "point"){
+    tool = "point";
+  }else if(choosenTool == "square"){
+    tool = "square";
+  }else if(choosenTool == triangle){
+    tool = "triangle";
+  }else if(choosenTool == "circle"){
+    tool = "circle";
+  }else if(choosenTool == "line"){
+    tool = "line";
+  }
+}
+
+
+function draw(e){
+  var fill = document.getElementById('fill').value;
+  var fillColor = document.getElementById('fillColor').value;
+  var stroke = document.getElementById('stroke').value;
+  var strokeColor = document.getElementById('strokeColor').value;
+  var radius = document.getElementById('radius').value;
+
+  var posX = e.clientX;
+  var posY = e.clientY;
+
+  if (tool == "point"){
+
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

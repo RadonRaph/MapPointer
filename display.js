@@ -9,16 +9,18 @@ var ctx;
 
 
 class point {
-  constructor(x, y, color, radius, name, content) {
+  constructor(x, y, svg, radius, name, content) {
     this.x = x;
     this.y = y;
-    this.color = color;
+    this.svg = svg;
     this.radius = radius;
     this.name = name;
     this.content = content;
   }
 }
-//var a = new point(150, 300, "#ff0000", 10, "test", "test");
+
+
+var a = new point(150, 300, "#ff0000", 10, "test", "test");
 //var b = new point(550, 700, "#33dd2b", 7, "test", "test");
 var points = [];
 

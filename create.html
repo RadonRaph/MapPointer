@@ -10,8 +10,25 @@
     </script>
   </head>
   <body onload="initialize();">
+
+    <div class="tools">
+      <ul>
+        <li onclick="changeTool('point');">Point</li>
+        <li onclick="changeTool('square');">Square</li>
+        <li onclick="changeTool('triangle');">Triangle</li>
+        <li onclick="changeTool('circle');">Circle</li>
+        <li onclick="changeTool('line');">Line</li>
+      </ul>
+      <div>
+        <span>Remplissage<input type="checkbox" id="fill"></span>
+        <span>Couleur de remplissage<input type="color" id="fillColor"></span>
+        <span>Contour<input type="checkbox" id="stroke"></span>
+        <span>Couleur de contour<input type="color" id="strokeColor"></span>
+        <span>Rayon <input type="number" id="radius"></span>
+      </div>
+    </div>
     <div id="points"></div>
-    <canvas id="canvas" width="300" height="300" onmousedown="addPoint(event)" onmousemove="detectPointsHover(event)" onkeydown="close(event)"></canvas>
+    <canvas id="canvas" width="300" height="300" onmousemove="detectPointsHover(event)" onkeydown="close(event)"></canvas>
     <div class="menu" id="menu">
       <form class="" action="" method="">
         <label for="name">Nom</label>
