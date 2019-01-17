@@ -10,7 +10,10 @@
     </script>
   </head>
   <body onload="initialize();">
-    <div id="points"></div>
+    <div id="points">
+      <svg id="svgC" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+      </svg>
+    </div>
     <canvas id="canvas" width="300" height="300" onmousedown="displayPoint(event)" onmousemove="detectPointsHover(event)" onkeydown="close(event)"></canvas>
     <div class="menu" id="menu">
       <h1 id="pointName"></h1>

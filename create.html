@@ -9,49 +9,50 @@
     <script type="text/javascript" src="create.js">
     </script>
   </head>
-  <body onload="initialize();">
+  <body onload="initialize();" oncontextmenu=" isFinishDrawing =true; return false; ">
 
-    <div class="tools">
-      <ul>
-        <li onclick="changeTool('point');">Point</li>
-        <li onclick="changeTool('square');">Square</li>
-        <li onclick="changeTool('triangle');">Triangle</li>
-        <li onclick="changeTool('circle');">Circle</li>
-        <li onclick="changeTool('line');">Line</li>
-      </ul>
-      <div>
-        <span>Remplissage<input type="checkbox" id="fill"></span>
-        <span>Couleur de remplissage<input type="color" id="fillColor"></span>
-        <span>Contour<input type="checkbox" id="stroke"></span>
-        <span>Couleur de contour<input type="color" id="strokeColor"></span>
-        <span>Rayon <input type="number" id="radius"></span>
+
+    <div id="points">
+
+    </div>
+    <!-- <div class="firstPlan"> -->
+      <div class="tools">
+        <ul>
+          <li onclick="changeTool('point');">Point</li>
+          <li onclick="changeTool('square');">Square</li>
+          <li onclick="changeTool('polygon');">Polygon</li>
+          <li onclick="changeTool('circle');">Circle</li>
+        </ul>
+        <div>
+          <span>Remplissage<input type="checkbox" id="fill" checked></span>
+          <span>Couleur de remplissage<input type="color" id="fillColor" value="#FFFFFF"></span>
+          <span>Contour<input type="checkbox" id="stroke" checked></span>
+          <span>Couleur de contour<input type="color" id="strokeColor" value="#000000"></span>
+          <span>Rayon <input type="number" id="radius" value="4"></span>
+        </div>
       </div>
-    </div>
-    <div id="points"></div>
-    <canvas id="canvas" width="300" height="300" onmousemove="detectPointsHover(event)" onkeydown="close(event)"></canvas>
-    <div class="menu" id="menu">
-      <form class="" action="" method="">
-        <label for="name">Nom</label>
-        <input type="text" name="name" value="" id="formName">
+      <div class="menu" id="menu">
+        <form class="" action="" method="">
+          <label for="name">Nom</label>
+          <input type="text" name="name" value="" id="formName">
 
-        <label for="posX">X</label>
-        <input type="number" name="posX" value="" id="formX">
-        <label for="posY">Y</label>
-        <input type="number" name="posY" value="" id="formY">
+          <label for="svg">Code de dessin</label>
+          <input type="text" name="svg" id="formSvg" disabled>
 
-        <label for="color">Couleur</label>
-        <input type="color" name="color" value="" id="formColor">
+          <label for="content">Contenu</label>
+          <textarea name="content" rows="8" cols="80" id="formContent"></textarea>
 
-        <label for="radius">Rayon</label>
-        <input type="number" name="radius" value="" id="formRadius">
+          <br>
+          <button type="button" name="button" onclick="savePoint()">Enregistrer</button>
+          <br>
+          <button type="button" name="button" style="background-color: red;" onclick="menuOpen(); points=[];">Abandonner</button>
+        </form>
+      </div>
+    <!-- </div> -->
+    <svg id="svgC" width="200" height="200" onmousemove="draw(event);" onclick="addPoint(event);" xmlns="http://www.w3.org/2000/svg">
+    </svg>
+    <canvas id="canvas" width="300" height="300"  onmousemove="detectPointsHover(event)" onkeydown="close(event)"></canvas>
 
-        <label for="content">Contenu</label>
-        <textarea name="content" rows="8" cols="80" id="formContent"></textarea>
-
-        <button type="button" name="button" onclick="savePoint()">Enregistrer</button>
-        <button type="button" name="button" style="background-color: red;" onclick="menuOpen();">Abandonner</button>
-      </form>
-    </div>
     <script type="text/javascript">
 
     </script>

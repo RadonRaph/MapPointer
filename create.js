@@ -4,42 +4,182 @@
 
 var pointsFile = "assets/points.json";
 var tool = "point";
-var isDrawing = "false";
+var points = [];
+
 
 function changeTool(choosenTool) {
   if (choosenTool == "point"){
     tool = "point";
   }else if(choosenTool == "square"){
     tool = "square";
-  }else if(choosenTool == triangle){
-    tool = "triangle";
+  }else if(choosenTool == "polygon"){
+    tool = "polygon";
   }else if(choosenTool == "circle"){
     tool = "circle";
-  }else if(choosenTool == "line"){
-    tool = "line";
   }
 }
 
+var isDrawing = false;
+var isFinishDrawing = false;
 
 function draw(e){
-  var fill = document.getElementById('fill').value;
-  var fillColor = document.getElementById('fillColor').value;
-  var stroke = document.getElementById('stroke').value;
-  var strokeColor = document.getElementById('strokeColor').value;
+  if (menuToggle == true){
+    return;
+  }
+
   var radius = document.getElementById('radius').value;
 
   var posX = e.clientX;
   var posY = e.clientY;
 
-  if (tool == "point"){
+  var svg = "";
+  var svgBonus = "";
 
+
+
+  if (tool == "point"){
+    if (isDrawing == true){
+      if (points.length == 1){
+        svg += "<circle cx='" + points[0].x + "' cy='" + points[0].y + "' r='" + radius + "'" + getSvgStyle() + "/>";
+        isFinishDrawing = true;
+      }else{
+        points = [];
+        isDrawing = false;
+      }
+    }else{
+      svg += "<circle cx='" + posX + "' cy='" + posY + "' r='" + radius + "'" + getSvgStyle() + "/>"
+    }
+  }else if (tool == "square"){
+    if (isDrawing == true){
+      if (points.length == 1){
+        var x1;
+        var y1;
+
+        var x2;
+        var y2;
+
+      if (points[0].x > posX){
+        x1 = points[0].x;
+        x2 = posX;
+      }else{
+        x1 = posX;
+        x2 = points[0].x;
+      }
+
+      if (points[0].y > posY){
+        y1 = points[0].y;
+        y2 = posY;
+      }else{
+        y1 = posY;
+        y2 = points[0].y;
+      }
+
+
+        var width = x1 - x2;
+        var height = y1 - y2;
+
+        svg = "<rect x='" + x2 + "' y='" + y2+ "' width='" + width + "' height='" + height  + "'" + getSvgStyle() + "/>";
+      }else if (points.length==2){
+        var x1;
+        var y1;
+
+        var x2;
+        var y2;
+
+        if (points[0].x > points[1].x){
+          x1 = points[0].x;
+          x2 = points[1].x;
+        }else{
+          x1 = points[1].x;
+          x2 = points[0].x;
+        }
+
+        if (points[0].y > points[1].y){
+          y1 = points[0].y;
+          y2 = points[1].y;
+        }else{
+          y1 = points[1].y;
+          y2 = points[0].y;
+        }
+
+        var width = x1 - x2;
+        var height = y1 - y2;
+
+        svg = "<rect x='" + x2 + "' y='" + y2+ "' width='" + width + "' height='" + height  + "'" + getSvgStyle() + "/>";
+        isFinishDrawing = true;
+      }else{
+        points = [];
+        isDrawing = false;
+      }
+
+    }else{
+      svgBonus = "<text x='" + posX + "' y='" + posY + "'>Cliquer pour le premier angle</text>";
+    }
+  }else if (tool == "polygon"){
+    if (isDrawing == true){
+      if (isFinishDrawing == false){
+        svg = "<polygon points='";
+        for (var i = 0; i < points.length; i++) {
+          svg += points[i].x;
+          svg += ",";
+          svg += points[i].y;
+          svg += " ";
+        }
+        svg += posX;
+        svg += ",";
+        svg += posY;
+        svg += "'" + getSvgStyle() + "/>";
+        svgBonus = "<text x='" + posX + "' y='" + posY + "'>Clique droit pour finir</text>";
+      }else{
+        svg = "<polygon points='";
+        for (var i = 0; i < points.length; i++) {
+          svg += points[i].x;
+          svg += ",";
+          svg += points[i].y;
+          svg += " ";
+        }
+        svg += "'" + getSvgStyle() + "/>";
+      }
+    }else{
+      svgBonus = "<text x='" + posX + "' y='" + posY + "'>Cliquer pour le premier point</text>";
+    }
   }
 
+  var svgC2 = document.getElementById('svgC');
+  svgC2.innerHTML = svg;
+  svgC2.innerHTML += svgBonus;
+
+  document.getElementById('formSvg').value = svg;
+
+  if (isFinishDrawing == true && menuToggle==false)
+  menuOpen();
 }
 
 
 
+function getSvgStyle(){
+  var r = "";
+  var fill = document.getElementById('fill').checked;
+  var fillColor = document.getElementById('fillColor').value;
+  var stroke = document.getElementById('stroke').checked;
+  var strokeColor = document.getElementById('strokeColor').value;
+  var radius = document.getElementById('radius').value;
 
+  if (fill == true)
+    r += " fill='"+fillColor+"'";
+  else {
+    r += " fill='transparent'";
+  }
+  if (stroke == true)
+    r += " stroke='"+strokeColor+"'";
+  else{
+    r += " stroke='transparent'";
+  }
+  r += " stroke-width='"+radius+"'";
+
+  return r;
+
+}
 
 
 
@@ -57,44 +197,11 @@ function draw(e){
 
 
 function addPoint(e){
-  menuOpen();
-
   var posX = e.clientX;
   var posY = e.clientY;
-
-  var newPoint = new point();
-  newPoint.x = posX;
-  newPoint.y = posY;
-  for (var i = 0; i < points.length; i++) {
-    if (posX < points[i].x + points[i].radius && posX > points[i].x - points[i].radius){
-      if (posY < points[i].y + points[i].radius && posY > points[i].y - points[i].radius){
-        newPoint = points[i];
-      }
-    }
-  }
-
-  if(newPoint.name)
-  document.getElementById("formName").value = newPoint.name;
-  else
-  document.getElementById("formName").value = "";
-
-  document.getElementById("formX").value = newPoint.x;
-  document.getElementById("formY").value = newPoint.y;
-
-  if(newPoint.radius)
-  document.getElementById("formRadius").value = newPoint.radius;
-  else
-  document.getElementById("formRadius").value = 1;
-
-  if(newPoint.color)
-  document.getElementById("formColor").value = newPoint.color;
-  else
-  document.getElementById("formColor").value = "#000000";
-
-  if(newPoint.content)
-  document.getElementById("formContent").value = newPoint.content;
-  else
-  document.getElementById("formContent").value = "";
+  var p = new point(posX, posY);
+  isDrawing = true;
+  points.push(p);
 
 
 }

@@ -5,6 +5,18 @@ map.src = mapUrl;
 var canvas;
 var ctx;
 
+var svgC;
+
+
+class marker {
+  constructor(x, y, svg, name, content){
+    this.x = x;
+    this.y = y;
+    this.svg = svg;
+    this.name = name;
+    this.content = content;
+  }
+}
 
 
 
@@ -12,10 +24,6 @@ class point {
   constructor(x, y, svg, radius, name, content) {
     this.x = x;
     this.y = y;
-    this.svg = svg;
-    this.radius = radius;
-    this.name = name;
-    this.content = content;
   }
 }
 
@@ -29,57 +37,63 @@ function initialize() {
   canvas = document.getElementById('canvas');
   canvas.width = map.width;
   canvas.height = map.height;
+
+  svgC = document.getElementById('svgC');
+  svgC.style.width = map.width;
+  svgC.style.height = map.height;
+
+
   ctx = canvas.getContext("2d");
   ctx.drawImage(map, 0, 0);
 
-  drawPoints();
+//  drawPoints();
 }
 
-function drawPoints() {
-  var pointsElements = document.getElementsByName('point');
-
-  for (var i = 0; i < pointsElements.length; i++) {
-    var pointsParams;
-    pointsParams = pointsElements[i].children;
-    var newPoint = new point();
-    for (var i2 = 0; i2 < pointsParams.length; i2++) {
-      switch (i2) {
-        case 0:
-        newPoint.name = pointsParams[i2].innerHTML;
-          break;
-        case 1:
-          newPoint.x = parseInt(pointsParams[i2].innerHTML);
-          break;
-        case 2:
-          newPoint.y = parseInt(pointsParams[i2].innerHTML);
-          break;
-        case 3:
-          newPoint.radius = parseInt(pointsParams[i2].innerHTML);
-          break;
-        case 4:
-          newPoint.color = pointsParams[i2].innerHTML;
-          break;
-        case 5:
-          newPoint.content = pointsParams[i2].innerHTML;
-          break;
-        default:
-          break;
-      }
-
-    }
-    points.push(newPoint);
-  }
-
-  for (var i = 0; i < points.length; i++) {
-    ctx.beginPath();
-    ctx.arc(points[i].x, points[i].y, points[i].radius,0,2*Math.PI);
-    ctx.fillStyle = points[i].color;
-    ctx.fill();
-    ctx.font = String(3*points[i].radius) + "px Arial";
-    ctx.fillText(points[i].name, points[i].x + 2*points[i].radius, points[i].y);
-    ctx.stroke();
-  }
-}
+// function drawPoints() {
+//   var pointsElements = document.getElementsByName('point');
+//
+//   for (var i = 0; i < pointsElements.length; i++) {
+//     var pointsParams;
+//     pointsParams = pointsElements[i].children;
+//     var newPoint = new point();
+//     for (var i2 = 0; i2 < pointsParams.length; i2++) {
+//       switch (i2) {
+//         case 0:
+//         newPoint.name = pointsParams[i2].innerHTML;
+//           break;
+//         case 1:
+//           newPoint.x = parseInt(pointsParams[i2].innerHTML);
+//           break;
+//         case 2:
+//           newPoint.y = parseInt(pointsParams[i2].innerHTML);
+//           break;
+//         case 3:
+//           newPoint.radius = parseInt(pointsParams[i2].innerHTML);
+//           break;
+//         case 4:
+//           newPoint.color = pointsParams[i2].innerHTML;
+//           break;
+//         case 5:
+//           newPoint.content = pointsParams[i2].innerHTML;
+//           break;
+//         default:
+//           break;
+//       }
+//
+//     }
+//     points.push(newPoint);
+//   }
+//
+//   for (var i = 0; i < points.length; i++) {
+//     ctx.beginPath();
+//     ctx.arc(points[i].x, points[i].y, points[i].radius,0,2*Math.PI);
+//     ctx.fillStyle = points[i].color;
+//     ctx.fill();
+//     ctx.font = String(3*points[i].radius) + "px Arial";
+//     ctx.fillText(points[i].name, points[i].x + 2*points[i].radius, points[i].y);
+//     ctx.stroke();
+//   }
+// }
 
 function detectPointsHover(e) {
       var posX = e.clientX;

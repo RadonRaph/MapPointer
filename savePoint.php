@@ -19,7 +19,7 @@ for ($i=0; $i < count($points); $i++) {
   $radius = $params[3];
   $color = $params[4];
   $content = $params[5];
-  echo "<div name='point' style='display: none;'> <span id='name'>".$name."</span><span id='x'>".$x."</span><span id='y'>".$y."</span><span id='radius'>".$radius."</span><span id='color'>".$color."</span><span id='content'>".$content."</span></div>";
+  //echo "<div name='point' style='display: none;'> <span id='name'>".$name."</span><span id='x'>".$x."</span><span id='y'>".$y."</span><span id='radius'>".$radius."</span><span id='color'>".$color."</span><span id='content'>".$content."</span></div>";
 }
 
  ?>

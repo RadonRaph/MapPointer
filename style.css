@@ -1,9 +1,16 @@
 body {margin: 0px;}
 
 #canvas {
-  z-index: -1;
+  z-index: -2;
   position: absolute;
 }
+
+.firstPlan {
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+  }
 
 
 .menu {
@@ -11,16 +18,35 @@ body {margin: 0px;}
   width: 25%;
   display: none;
   background-color: #fff9;
-  z-index: 1;
   float: right;
+  margin-left: 75%;
+
 }
 
 .tools {
   height: 5vh;
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(255,255,255,0.4);
+  display: flex;
+  justify-content: space-around;
+  position: fixed;
+}
+
+.tools ul {
+  display: flex;
+  justify-content: space-around;
+}
+
+.tools ul li {
+  display: block;
+  margin: 2%;
 }
 
 form {
   display: flex;
   flex-direction: column;
+}
+
+svg {
+  position: absolute;
+  z-index: -1;
 }
