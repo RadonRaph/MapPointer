@@ -8,8 +8,9 @@
     </script>
     <script type="text/javascript" src="create.js">
     </script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
   </head>
-  <body onload="initialize();" oncontextmenu=" isFinishDrawing =true; return false;" onmousedown="mapAnchor(event); mouseDown=true;" onmousemove="mapMove(event);" onmouseup="mouseDown=false;" onmousewheel="wheelZoom(event);">
+  <body onload="initialize();" oncontextmenu=" isFinishDrawing =true; return false;" onmousedown="mapAnchor(event); mouseDown=true;" onmousemove="mapMove(event);" onmouseup="mouseDown=false;" onmousewheel="wheelZoom(event); draw(event);">
 
 
     <div id="points">
@@ -18,18 +19,18 @@
     <!-- <div class="firstPlan"> -->
       <div class="tools">
         <ul>
-          <li onclick="changeTool('move');">Move</li>
-          <li onclick="changeTool('point');">Point</li>
-          <li onclick="changeTool('square');">Square</li>
-          <li onclick="changeTool('polygon');">Polygon</li>
-          <li onclick="changeTool('circle');">Circle</li>
+          <li onclick="changeTool('move');" title="Outil déplacer"><button id="toolMove"><i class="fa fa-hand-rock"></i></button></li>
+          <li onclick="changeTool('point');" title="Outil point"><button id="toolPoint"><i class="fas fa-dot-circle"></i></button></li>
+          <li onclick="changeTool('square');" title="Outil rectangle"><button id="toolSquare"><i class="far fa-square"></i></button></li>
+          <li onclick="changeTool('polygon');" title="Outil polygon"><button id="toolPolygon"><i class="fas fa-draw-polygon"></i></button></li>
+          <li onclick="changeTool('circle');" title="Outil cercle"><button id="toolCircle"><i class="far fa-circle"></i></button></li>
         </ul>
         <div>
           <span>Remplissage<input type="checkbox" id="fill" checked></span>
           <span>Couleur de remplissage<input type="color" id="fillColor" value="#FFFFFF"></span>
           <span>Contour<input type="checkbox" id="stroke" checked></span>
           <span>Couleur de contour<input type="color" id="strokeColor" value="#000000"></span>
-          <span>Rayon <input type="number" id="radius" value="4"></span>
+          <span>Epaisseur <input type="number" id="radius" value="4" style="width: 2.25em;"></span>
           <span>Zoom <input type="range" min="0.25" max="5" value="1" step="0.25" id="zoomSlider" onchange="mapZoom(this.value); draw(event);"><span id="zoomValue">1</span>x</span>
         </div>
       </div>
@@ -58,7 +59,7 @@
     <div class="map" id="map" draggable="false"></div>
     <!-- <canvas id="canvas" width="300" height="300"  onmousemove="detectPointsHover(event)" onkeydown="close(event)"></canvas> -->
     <script type="text/javascript">
-
+      changeTool("move");
     </script>
   </body>
 

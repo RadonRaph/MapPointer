@@ -25,7 +25,8 @@ body {margin: 0px;}
 
 .tools {
   height: 5vh;
-  background-color: rgba(255,255,255,0.4);
+  width: 100vw;
+  background-color: rgba(255,200,0,0.4);
   display: flex;
   justify-content: space-around;
   position: absolute;
@@ -34,11 +35,36 @@ body {margin: 0px;}
 .tools ul {
   display: flex;
   justify-content: space-around;
+  margin: 0px;
 }
 
 .tools ul li {
   display: block;
   margin: 2%;
+}
+
+.tools ul li button{
+  background-color: #fad390;
+  width: 4vh;
+  height: 4vh;
+  border: 2px solid #f6b93b;
+  cursor: pointer;
+  color: #e58e26;
+  border-radius: 10px;
+  transition: all 0.5s ease-out;
+}
+
+
+.selected{
+  background-color: #fa983a !important;
+  color: #eb2f06 !important;
+  border-color: #e58e26 !important;
+}
+
+.tools ul li button:hover{
+  background-color: #fa983a;
+  color: #eb2f06;
+  border-color: #e58e26;
 }
 
 form {
@@ -49,6 +75,7 @@ form {
 svg {
   position: absolute;
   z-index: -1;
+  cursor: crosshair;
 }
 
 .map {

@@ -3,7 +3,7 @@
 //var points = [a, b];
 
 var pointsFile = "assets/points.json";
-var tool = "move";
+var tool = "";
 var points = [];
 
 
@@ -16,22 +16,48 @@ function mapMove(e){
     mapOffsetX += (posX -mapAnchorX)/25;
     mapOffsetY += (posY -mapAnchorY)/25;
   }
+
+
   canvas.style.backgroundPosition = mapOffsetX + "px " + mapOffsetY + "px";
 }
 
 
 
+
+
 function changeTool(choosenTool) {
   canMove = false;
+  document.getElementById('svgC').style.cursor = "crosshair";
+
+
+  var toolMove = document.getElementById("toolMove");
+  var toolPoint = document.getElementById("toolPoint");
+  var toolSquare = document.getElementById("toolSquare");
+  var toolPolygon = document.getElementById("toolPolygon");
+  var toolCircle = document.getElementById("toolCircle");
+
+  toolMove.classList.remove("selected");
+  toolPoint.classList.remove("selected");
+  toolSquare.classList.remove("selected");
+  toolPolygon.classList.remove("selected");
+  toolCircle.classList.remove("selected");
+
+
   if (choosenTool == "point"){
     tool = "point";
+    toolPoint.classList.add("selected");
   }else if(choosenTool == "square"){
     tool = "square";
+    toolSquare.classList.add("selected");
   }else if(choosenTool == "polygon"){
     tool = "polygon";
+    toolPolygon.classList.add("selected");
   }else if(choosenTool == "circle"){
     tool = "circle";
+    toolCircle.classList.add("selected");
   }else if (choosenTool == "move"){
+    document.getElementById('svgC').style.cursor = "grab";
+    toolMove.classList.add("selected");
     tool = "move";
     canMove = true;
   }
@@ -56,15 +82,14 @@ function draw(e){
   if (tool == "point"){
     if (isDrawing == true){
       if (points.length == 1){
-        svg += "<circle cx='" + points[0].getX() + "' cy='" + points[0].getY() + "' r='" + radius + "'" + getSvgStyle() + "/>";
-        console.log("x:" + points[0].x + " getX:" + points[0].getX());
+        svg += "<circle cx='" + points[0].getX() + "' cy='" + points[0].getY() + "' r='" + 10 + "'" + getSvgStyle() + "/>";
         isFinishDrawing = true;
       }else{
         points = [];
         isDrawing = false;
       }
     }else{
-      svg += "<circle cx='" + posX + "' cy='" + posY + "' r='" + radius + "'" + getSvgStyle() + "/>"
+      svg += "<circle cx='" + posX + "' cy='" + posY + "' r='" + 10 + "'" + getSvgStyle() + "/>"
     }
   }else if (tool == "square"){
     if (isDrawing == true){
@@ -130,7 +155,7 @@ function draw(e){
       }
 
     }else{
-      svgBonus = "<text x='" + posX + "' y='" + posY + "'>Cliquer pour le premier angle</text>";
+      svgBonus = "<text x='" + (posX+20) + "' y='" + posY + "'>Cliquer pour le premier angle</text>";
     }
   }else if (tool == "polygon"){
     if (isDrawing == true){
@@ -146,7 +171,7 @@ function draw(e){
         svg += ",";
         svg += posY;
         svg += "'" + getSvgStyle() + "/>";
-        svgBonus = "<text x='" + posX + "' y='" + posY + "'>Clique droit pour finir</text>";
+        svgBonus = "<text x='" + posX+10 + "' y='" + posY + "'>Clique droit pour finir</text>";
       }else{
         svg = "<polyline points='";
         for (var i = 0; i < points.length; i++) {
@@ -158,7 +183,31 @@ function draw(e){
         svg += "'" + getSvgStyle() + "/>";
       }
     }else{
-      svgBonus = "<text x='" + posX + "' y='" + posY + "'>Cliquer pour le premier point</text>";
+      svgBonus = "<text x='" + (posX+20) + "' y='" + posY + "'>Cliquer pour le premier point</text>";
+    }
+  }else if(tool == "circle"){
+    if (isDrawing == true){
+      if (points.length == 1){
+        var _x = Math.abs(points[0].getX() - posX);
+        var _y = Math.abs(points[0].getY() - posY);
+        var d = Math.round(Math.sqrt(_x + _y)*10);
+
+
+        svg += "<circle cx='" + points[0].getX() + "' cy='" + points[0].getY() + "' r='" + d + "'" + getSvgStyle() + "/>";
+      }else if (points.length == 2){
+        var _x = Math.abs(points[0].getX() - points[1].getX())*zoom;
+        var _y = Math.abs(points[0].getY() - points[1].getY())*zoom;
+        var d = Math.round(Math.sqrt(_x + _y)*10);
+
+
+        svg += "<circle cx='" + points[0].getX() + "' cy='" + points[0].getY() + "' r='" + d + "'" + getSvgStyle() + "/>";
+        isFinishDrawing = true;
+      }else{
+        points = [];
+        isDrawing = false;
+      }
+    }else{
+      svgBonus = "<text x='" + (posX+20) + "' y='" + posY + "'>Cliquer pour le centre du cercle</text>";
     }
   }
 
@@ -217,8 +266,8 @@ function addPoint(e){
   if (menuToggle == true || canMove == true){
     return;
   }
-  var posX = e.clientX - window.pageXOffset;
-  var posY = e.clientY - window.pageYOffset;
+  var posX = e.clientX - window.pageXOffset - mapOffsetX;
+  var posY = e.clientY - window.pageYOffset - mapOffsetY;
   var scale = 1/zoom;
   posX = posX*scale;
   posY = posY*scale;

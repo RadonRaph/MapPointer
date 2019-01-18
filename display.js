@@ -32,11 +32,11 @@ class point {
   }
 
   getX() {
-    return this.x *zoom;
+    return ((this.x) *zoom+mapOffsetX);
   }
 
   getY(){
-    return this.y*zoom;
+    return ((this.y)*zoom+mapOffsetY);
   }
 }
 
@@ -73,7 +73,7 @@ function mapZoom(newZoom){
 }
 
 function wheelZoom(e){
-  var nZoom = zoom + 0.25*(e.deltaY/100);
+  var nZoom = zoom + 0.25*Math.round(e.deltaY/100);
   mapZoom(nZoom);
 }
 
