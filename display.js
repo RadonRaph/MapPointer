@@ -5,13 +5,18 @@ map.src = mapUrl;
 var canvas;
 var ctx;
 
+var zoom =1;
+
 var svgC;
 
+var mouseDown = false;
+var mapAnchorX;
+var mapAnchorY;
+var mapOffsetX = 0;
+var mapOffsetY = 0;
 
 class marker {
-  constructor(x, y, svg, name, content){
-    this.x = x;
-    this.y = y;
+  constructor(svg, name, content){
     this.svg = svg;
     this.name = name;
     this.content = content;
@@ -21,33 +26,63 @@ class marker {
 
 
 class point {
-  constructor(x, y, svg, radius, name, content) {
+  constructor(x, y) {
     this.x = x;
     this.y = y;
+  }
+
+  getX() {
+    return this.x *zoom;
+  }
+
+  getY(){
+    return this.y*zoom;
   }
 }
 
 
-var a = new point(150, 300, "#ff0000", 10, "test", "test");
-//var b = new point(550, 700, "#33dd2b", 7, "test", "test");
-var points = [];
 
 function initialize() {
   console.log("init");
-  canvas = document.getElementById('canvas');
-  canvas.width = map.width;
-  canvas.height = map.height;
+  //canvas = document.getElementById('canvas');
+  //canvas.width = map.width;
+  //canvas.height = map.height;
+  canvas = document.getElementById('map');
+  canvas.style.backgroundImage = "url('"+mapUrl+"')";
+  canvas.style.backgroundRepeat = "no-repeat";
+  canvas.style.backgroundSize = (map.width * zoom) + "px " + (map.height * zoom) + "px";
+  //svgC = document.getElementById('svgC');
+  //svgC.style.width = map.width;
+  //svgC.style.height = map.height;
 
-  svgC = document.getElementById('svgC');
-  svgC.style.width = map.width;
-  svgC.style.height = map.height;
 
-
-  ctx = canvas.getContext("2d");
-  ctx.drawImage(map, 0, 0);
+  //ctx = canvas.getContext("2d");
+  //ctx.drawImage(map, 0, 0);
 
 //  drawPoints();
 }
+
+function mapZoom(newZoom){
+  if (newZoom < 0.25 || newZoom > 5)
+  return null;
+
+  zoom = newZoom;
+  document.getElementById('zoomValue').innerHTML = zoom;
+  document.getElementById('zoomSlider').value = zoom;
+  canvas.style.backgroundSize = (map.width * zoom) + "px " + (map.height * zoom) + "px";
+}
+
+function wheelZoom(e){
+  var nZoom = zoom + 0.25*(e.deltaY/100);
+  mapZoom(nZoom);
+}
+
+function mapAnchor(e){
+  mapAnchorX = e.clientX - window.pageXOffset;
+  mapAnchorY= posY = e.clientY - window.pageYOffset;
+}
+
+
 
 // function drawPoints() {
 //   var pointsElements = document.getElementsByName('point');
@@ -95,23 +130,23 @@ function initialize() {
 //   }
 // }
 
-function detectPointsHover(e) {
-      var posX = e.clientX;
-      var posY = e.clientY;
-      var pointCount = 0;
-
-      for (var i = 0; i < points.length; i++) {
-        if (posX < points[i].x + points[i].radius && posX > points[i].x - points[i].radius){
-          if (posY < points[i].y + points[i].radius && posY > points[i].y - points[i].radius){
-            canvas.style.cursor = "pointer";
-            pointCount += 1;
-          }
-        }
-      }
-      if (pointCount == 0)
-        canvas.style.cursor = "auto";
-
-}
+// function detectPointsHover(e) {
+//       var posX = e.clientX;
+//       var posY = e.clientY;
+//       var pointCount = 0;
+//
+//       for (var i = 0; i < points.length; i++) {
+//         if (posX < points[i].x + points[i].radius && posX > points[i].x - points[i].radius){
+//           if (posY < points[i].y + points[i].radius && posY > points[i].y - points[i].radius){
+//             canvas.style.cursor = "pointer";
+//             pointCount += 1;
+//           }
+//         }
+//       }
+//       if (pointCount == 0)
+//         canvas.style.cursor = "auto";
+//
+// }
 
 var menuToggle = false;
 function menuOpen(){
@@ -137,15 +172,15 @@ function close(event) {
 }
 
 
-var req = new XMLHttpRequest();
-req.open('GET', 'savePoint.php', true);
-req.send(null);
-var reqText;
-req.onreadystatechange = function() { // Call a function when the state changes.
-  if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-      reqText = req.responseText;
-      document.getElementById('points').innerHTML = reqText;
-      initialize();
-      console.log("pointsRecup");
-  }
-}
+// var req = new XMLHttpRequest();
+// req.open('GET', 'savePoint.php', true);
+// req.send(null);
+// var reqText;
+// req.onreadystatechange = function() { // Call a function when the state changes.
+//   if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+//       reqText = req.responseText;
+//       document.getElementById('points').innerHTML = reqText;
+//       initialize();
+//       console.log("pointsRecup");
+//   }
+// }

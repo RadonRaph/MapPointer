@@ -3,11 +3,26 @@
 //var points = [a, b];
 
 var pointsFile = "assets/points.json";
-var tool = "point";
+var tool = "move";
 var points = [];
 
 
+var canMove = true;
+
+function mapMove(e){
+  var posX = e.clientX - window.pageXOffset;
+  var posY = e.clientY - window.pageYOffset;
+  if (canMove == true && mouseDown == true){
+    mapOffsetX += (posX -mapAnchorX)/25;
+    mapOffsetY += (posY -mapAnchorY)/25;
+  }
+  canvas.style.backgroundPosition = mapOffsetX + "px " + mapOffsetY + "px";
+}
+
+
+
 function changeTool(choosenTool) {
+  canMove = false;
   if (choosenTool == "point"){
     tool = "point";
   }else if(choosenTool == "square"){
@@ -16,6 +31,9 @@ function changeTool(choosenTool) {
     tool = "polygon";
   }else if(choosenTool == "circle"){
     tool = "circle";
+  }else if (choosenTool == "move"){
+    tool = "move";
+    canMove = true;
   }
 }
 
@@ -23,14 +41,12 @@ var isDrawing = false;
 var isFinishDrawing = false;
 
 function draw(e){
-  if (menuToggle == true){
-    return;
-  }
+
 
   var radius = document.getElementById('radius').value;
 
-  var posX = e.clientX;
-  var posY = e.clientY;
+  var posX = e.clientX - window.pageXOffset;
+  var posY = e.clientY - window.pageYOffset;
 
   var svg = "";
   var svgBonus = "";
@@ -40,7 +56,8 @@ function draw(e){
   if (tool == "point"){
     if (isDrawing == true){
       if (points.length == 1){
-        svg += "<circle cx='" + points[0].x + "' cy='" + points[0].y + "' r='" + radius + "'" + getSvgStyle() + "/>";
+        svg += "<circle cx='" + points[0].getX() + "' cy='" + points[0].getY() + "' r='" + radius + "'" + getSvgStyle() + "/>";
+        console.log("x:" + points[0].x + " getX:" + points[0].getX());
         isFinishDrawing = true;
       }else{
         points = [];
@@ -58,20 +75,20 @@ function draw(e){
         var x2;
         var y2;
 
-      if (points[0].x > posX){
-        x1 = points[0].x;
+      if (points[0].getX() > posX){
+        x1 = points[0].getX();
         x2 = posX;
       }else{
         x1 = posX;
-        x2 = points[0].x;
+        x2 = points[0].getX();
       }
 
-      if (points[0].y > posY){
-        y1 = points[0].y;
+      if (points[0].getY() > posY){
+        y1 = points[0].getY();
         y2 = posY;
       }else{
         y1 = posY;
-        y2 = points[0].y;
+        y2 = points[0].getY();
       }
 
 
@@ -86,20 +103,20 @@ function draw(e){
         var x2;
         var y2;
 
-        if (points[0].x > points[1].x){
-          x1 = points[0].x;
-          x2 = points[1].x;
+        if (points[0].getX() > points[1].getX()){
+          x1 = points[0].getX();
+          x2 = points[1].getX();
         }else{
-          x1 = points[1].x;
-          x2 = points[0].x;
+          x1 = points[1].getX();
+          x2 = points[0].getX();
         }
 
-        if (points[0].y > points[1].y){
-          y1 = points[0].y;
-          y2 = points[1].y;
+        if (points[0].getY() > points[1].getY()){
+          y1 = points[0].getY();
+          y2 = points[1].getY();
         }else{
-          y1 = points[1].y;
-          y2 = points[0].y;
+          y1 = points[1].getY();
+          y2 = points[0].getY();
         }
 
         var width = x1 - x2;
@@ -118,11 +135,11 @@ function draw(e){
   }else if (tool == "polygon"){
     if (isDrawing == true){
       if (isFinishDrawing == false){
-        svg = "<polygon points='";
+        svg = "<polyline points='";
         for (var i = 0; i < points.length; i++) {
-          svg += points[i].x;
+          svg += points[i].getX();
           svg += ",";
-          svg += points[i].y;
+          svg += points[i].getY();
           svg += " ";
         }
         svg += posX;
@@ -131,11 +148,11 @@ function draw(e){
         svg += "'" + getSvgStyle() + "/>";
         svgBonus = "<text x='" + posX + "' y='" + posY + "'>Clique droit pour finir</text>";
       }else{
-        svg = "<polygon points='";
+        svg = "<polyline points='";
         for (var i = 0; i < points.length; i++) {
-          svg += points[i].x;
+          svg += points[i].getX();
           svg += ",";
-          svg += points[i].y;
+          svg += points[i].getY();
           svg += " ";
         }
         svg += "'" + getSvgStyle() + "/>";
@@ -197,8 +214,16 @@ function getSvgStyle(){
 
 
 function addPoint(e){
-  var posX = e.clientX;
-  var posY = e.clientY;
+  if (menuToggle == true || canMove == true){
+    return;
+  }
+  var posX = e.clientX - window.pageXOffset;
+  var posY = e.clientY - window.pageYOffset;
+  var scale = 1/zoom;
+  posX = posX*scale;
+  posY = posY*scale;
+
+
   var p = new point(posX, posY);
   isDrawing = true;
   points.push(p);

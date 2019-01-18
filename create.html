@@ -9,7 +9,7 @@
     <script type="text/javascript" src="create.js">
     </script>
   </head>
-  <body onload="initialize();" oncontextmenu=" isFinishDrawing =true; return false; ">
+  <body onload="initialize();" oncontextmenu=" isFinishDrawing =true; return false;" onmousedown="mapAnchor(event); mouseDown=true;" onmousemove="mapMove(event);" onmouseup="mouseDown=false;" onmousewheel="wheelZoom(event);">
 
 
     <div id="points">
@@ -18,6 +18,7 @@
     <!-- <div class="firstPlan"> -->
       <div class="tools">
         <ul>
+          <li onclick="changeTool('move');">Move</li>
           <li onclick="changeTool('point');">Point</li>
           <li onclick="changeTool('square');">Square</li>
           <li onclick="changeTool('polygon');">Polygon</li>
@@ -29,6 +30,7 @@
           <span>Contour<input type="checkbox" id="stroke" checked></span>
           <span>Couleur de contour<input type="color" id="strokeColor" value="#000000"></span>
           <span>Rayon <input type="number" id="radius" value="4"></span>
+          <span>Zoom <input type="range" min="0.25" max="5" value="1" step="0.25" id="zoomSlider" onchange="mapZoom(this.value); draw(event);"><span id="zoomValue">1</span>x</span>
         </div>
       </div>
       <div class="menu" id="menu">
@@ -45,14 +47,16 @@
           <br>
           <button type="button" name="button" onclick="savePoint()">Enregistrer</button>
           <br>
-          <button type="button" name="button" style="background-color: red;" onclick="menuOpen(); points=[];">Abandonner</button>
+          <button type="button" name="button" style="background-color: red;" onclick="menuOpen(); isFinishDrawing=false; points=[];">Abandonner</button>
         </form>
       </div>
     <!-- </div> -->
-    <svg id="svgC" width="200" height="200" onmousemove="draw(event);" onclick="addPoint(event);" xmlns="http://www.w3.org/2000/svg">
-    </svg>
-    <canvas id="canvas" width="300" height="300"  onmousemove="detectPointsHover(event)" onkeydown="close(event)"></canvas>
 
+
+    <svg class="map" id="svgC" onmousemove="draw(event);" onclick="addPoint(event);" xmlns="http://www.w3.org/2000/svg" draggable="false">
+    </svg>
+    <div class="map" id="map" draggable="false"></div>
+    <!-- <canvas id="canvas" width="300" height="300"  onmousemove="detectPointsHover(event)" onkeydown="close(event)"></canvas> -->
     <script type="text/javascript">
 
     </script>
