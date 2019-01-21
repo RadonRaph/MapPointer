@@ -6,20 +6,25 @@
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="display.js">
     </script>
-    <script type="text/javascript" src="info.js">
-    </script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
   </head>
-  <body onload="initialize();">
+  <body onload="initialize();" oncontextmenu=" return false;" onmousedown="mapAnchor(event); mouseDown=true;" onmousemove="mapMove(event);" onmouseup="mouseDown=false;" onmousewheel="wheelZoom(event);">
+    <div style="position: fixed;"><p>Zoom</p><div><input type="range" min="0.25" max="2" value="1" step="0.25" id="zoomSlider" onchange="mapZoom(this.value); draw(event);"></div><p style="width: 4em;"><span id="zoomValue">1</span>x</p></div>
+
     <div id="points">
-      <svg id="svgC" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
-      </svg>
-    </div>
-    <canvas id="canvas" width="300" height="300" onmousedown="displayPoint(event)" onmousemove="detectPointsHover(event)" onkeydown="close(event)"></canvas>
-    <div class="menu" id="menu">
-      <h1 id="pointName"></h1>
-      <div id="pointContent"></div>
 
     </div>
+    <!-- <div class="firstPlan"> -->
+
+
+    <!-- </div> -->
+
+
+    <svg class="map" id="svgC" xmlns="http://www.w3.org/2000/svg" draggable="false">
+    </svg>
+    <div class="map" id="map" draggable="false"></div>
+    <div class="background"><p>All rights reserved by Raccoonlab.fr and Raphael Horion</p></div>
+    <!-- <canvas id="canvas" width="300" height="300"  onmousemove="detectPointsHover(event)" onkeydown="close(event)"></canvas> -->
   </body>
 
 </html>

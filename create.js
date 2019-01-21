@@ -210,15 +210,21 @@ function draw(e){
       svgBonus = "<text x='" + (posX+20) + "' y='" + posY + "'>Cliquer pour le centre du cercle</text>";
     }
   }
-
+  drawMarkers();
   var svgC2 = document.getElementById('svgC');
-  svgC2.innerHTML = svg;
+  svgC2.innerHTML += svg;
   svgC2.innerHTML += svgBonus;
 
+  var scale = 1/zoom;
   document.getElementById('formSvg').value = svg;
+  document.getElementById('formOffsetX').value = mapOffsetX * scale;
+  document.getElementById('formOffsetY').value = mapOffsetY * scale;
 
-  if (isFinishDrawing == true && menuToggle==false)
-  menuOpen();
+  if (isFinishDrawing == true && menuToggle==false){
+    menuOpen();
+
+  }
+
 }
 
 
@@ -281,19 +287,22 @@ function addPoint(e){
 }
 
 
-function savePoint() {
-  var newPoint = new point();
+function saveMarker() {
+  var newMarker = new marker();
 
-  newPoint.x = document.getElementById("formX").value;
-  newPoint.y = document.getElementById("formY").value;
+  newMarker.name = document.getElementById("formName").value;
 
-  newPoint.name = document.getElementById("formName").value;
+  newMarker.offsetX = document.getElementById("formOffsetX").value;
 
-  newPoint.radius = document.getElementById("formRadius").value;
+  newMarker.offsetY = document.getElementById("formOffsetY").value;
 
-  newPoint.color = document.getElementById("formColor").value;
+  newMarker.svg = document.getElementById("formSvg").value;
 
-  newPoint.content = document.getElementById("formContent").value;
+  newMarker.content = document.getElementById("formContent").value;
+
+  newMarker.lored = document.getElementById('formLored').checked;
+
+  newMarker.clickable = document.getElementById('formClickable').checked;
 
   var xhr = new XMLHttpRequest();
   xhr.open("POST", 'savePoint.php', true);
@@ -306,6 +315,6 @@ function savePoint() {
           location.reload();
     }
   }
-  xhr.send("name=" + newPoint.name + "&x=" + newPoint.x + "&y=" + newPoint.y + "&color=" + newPoint.color + "&radius=" + newPoint.radius + "&content=" + newPoint.content);
+  xhr.send("name=" + newMarker.name + "&offsetX=" + newMarker.offsetX + "&offsetY=" + newMarker.offsetY + "&svg=" + newMarker.svg + "&content=" + newMarker.content + "&lored=" + newMarker.lored + "&clickable=" + newMarker.clickable);
 
 }

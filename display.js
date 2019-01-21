@@ -1,4 +1,4 @@
-var mapUrl = "assets/map.png";
+var mapUrl = "assets/map.jpeg";
 var map = new Image();
 map.src = mapUrl;
 
@@ -14,12 +14,18 @@ var mapAnchorX;
 var mapAnchorY;
 var mapOffsetX = 0;
 var mapOffsetY = 0;
+var markers = [];
 
 class marker {
-  constructor(svg, name, content){
-    this.svg = svg;
+  constructor(name, offsetX, offsetY, svg, content, lored, clickable){
+
     this.name = name;
+    this.offsetX = offsetX;
+    this.offsetY = offsetY;
+    this.svg = svg;
     this.content = content;
+    this.lored = lored;
+    this.clickable = clickable;
   }
 }
 
@@ -59,21 +65,25 @@ function initialize() {
   //ctx = canvas.getContext("2d");
   //ctx.drawImage(map, 0, 0);
 
-//  drawPoints();
+  //  drawPoints();
+
 }
 
 function mapZoom(newZoom){
-  if (newZoom < 0.25 || newZoom > 5)
+  newZoom = parseFloat(newZoom);
+  if (newZoom < 0.25 || newZoom > 2)
   return null;
 
   zoom = newZoom;
   document.getElementById('zoomValue').innerHTML = zoom;
   document.getElementById('zoomSlider').value = zoom;
   canvas.style.backgroundSize = (map.width * zoom) + "px " + (map.height * zoom) + "px";
+
+  drawMarkers();
 }
 
 function wheelZoom(e){
-  var nZoom = zoom + 0.25*Math.round(e.deltaY/100);
+  var nZoom = zoom - 0.25*Math.round(e.deltaY/100);
   mapZoom(nZoom);
 }
 
@@ -82,53 +92,80 @@ function mapAnchor(e){
   mapAnchorY= posY = e.clientY - window.pageYOffset;
 }
 
+function mapMove(e){
+  var posX = e.clientX - window.pageXOffset;
+  var posY = e.clientY - window.pageYOffset;
+  if (mouseDown == true){
+    mapOffsetX += (posX -mapAnchorX)/25;
+    mapOffsetY += (posY -mapAnchorY)/25;
+  }
 
 
-// function drawPoints() {
-//   var pointsElements = document.getElementsByName('point');
-//
-//   for (var i = 0; i < pointsElements.length; i++) {
-//     var pointsParams;
-//     pointsParams = pointsElements[i].children;
-//     var newPoint = new point();
-//     for (var i2 = 0; i2 < pointsParams.length; i2++) {
-//       switch (i2) {
-//         case 0:
-//         newPoint.name = pointsParams[i2].innerHTML;
-//           break;
-//         case 1:
-//           newPoint.x = parseInt(pointsParams[i2].innerHTML);
-//           break;
-//         case 2:
-//           newPoint.y = parseInt(pointsParams[i2].innerHTML);
-//           break;
-//         case 3:
-//           newPoint.radius = parseInt(pointsParams[i2].innerHTML);
-//           break;
-//         case 4:
-//           newPoint.color = pointsParams[i2].innerHTML;
-//           break;
-//         case 5:
-//           newPoint.content = pointsParams[i2].innerHTML;
-//           break;
-//         default:
-//           break;
-//       }
-//
-//     }
-//     points.push(newPoint);
-//   }
-//
-//   for (var i = 0; i < points.length; i++) {
-//     ctx.beginPath();
-//     ctx.arc(points[i].x, points[i].y, points[i].radius,0,2*Math.PI);
-//     ctx.fillStyle = points[i].color;
-//     ctx.fill();
-//     ctx.font = String(3*points[i].radius) + "px Arial";
-//     ctx.fillText(points[i].name, points[i].x + 2*points[i].radius, points[i].y);
-//     ctx.stroke();
-//   }
-// }
+  document.getElementById('map').style.backgroundPosition = mapOffsetX + "px " + mapOffsetY + "px";
+
+  drawMarkers();
+}
+
+function loadMarkers() {
+  var markersElements = document.getElementsByName('marker');
+
+  for (var i = 0; i < markersElements.length; i++) {
+    var markersParams;
+    markersParams = markersElements[i].children;
+    var newmarker = new marker();
+    for (var i2 = 0; i2 < markersParams.length; i2++) {
+      switch (i2) {
+        case 0:
+        newmarker.name = markersParams[i2].innerHTML;
+        break;
+        case 1:
+        newmarker.offsetX = parseInt(markersParams[i2].innerHTML);
+        break;
+        case 2:
+        newmarker.offsetY = parseInt(markersParams[i2].innerHTML);
+        break;
+        case 3:
+        newmarker.svg = markersParams[i2].innerHTML;
+        break;
+        case 4:
+        newmarker.content = markersParams[i2].innerHTML;
+        break;
+        case 5:
+        newmarker.lored = markersParams[i2].innerHTML;
+        break;
+        case 6:
+        newmarker.clickable = markersParams[i2].innerHTML;
+        break;
+        default:
+        break;
+      }
+
+    }
+    markers.push(newmarker);
+  }
+  drawMarkers();
+}
+
+function drawMarkers() {
+  document.getElementById('svgC').innerHTML = "";
+  for (var i = 0; i < markers.length; i++) {
+
+    var x = (mapOffsetX - (markers[i].offsetX*zoom));
+    var y = (mapOffsetY-(markers[i].offsetY*zoom));
+
+    var foo = "<g transform='translate(";
+    foo += x;
+    foo += "," + y;
+    foo += ") scale(";
+    foo += zoom + "," + zoom;
+    foo += ")'>";
+    foo += markers[i].svg;
+    foo += "</g>";
+
+    document.getElementById('svgC').innerHTML += foo;
+  }
+    console.log(mapOffsetX);
+}
 
 // function detectPointsHover(e) {
 //       var posX = e.clientX;
@@ -165,22 +202,23 @@ function menuOpen(){
 
 
 function close(event) {
-    var x = event.keyCode;
-    if (x == 27) {  // 27 is the ESC key
-      menu();
-    }
+  var x = event.keyCode;
+  if (x == 27) {  // 27 is the ESC key
+    menu();
+  }
 }
 
 
-// var req = new XMLHttpRequest();
-// req.open('GET', 'savePoint.php', true);
-// req.send(null);
-// var reqText;
-// req.onreadystatechange = function() { // Call a function when the state changes.
-//   if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-//       reqText = req.responseText;
-//       document.getElementById('points').innerHTML = reqText;
-//       initialize();
-//       console.log("pointsRecup");
-//   }
-// }
+var req = new XMLHttpRequest();
+req.open('GET', 'savePoint.php', true);
+req.send(null);
+var reqText;
+req.onreadystatechange = function() { // Call a function when the state changes.
+  if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+    reqText = req.responseText;
+    document.getElementById('points').innerHTML = reqText;
+    //initialize();
+    loadMarkers();
+    console.log("pointsRecup");
+  }
+}

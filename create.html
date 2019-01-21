@@ -26,18 +26,26 @@
           <li onclick="changeTool('circle');" title="Outil cercle"><button id="toolCircle"><i class="far fa-circle"></i></button></li>
         </ul>
         <div>
-          <span>Remplissage<input type="checkbox" id="fill" checked></span>
-          <span>Couleur de remplissage<input type="color" id="fillColor" value="#FFFFFF"></span>
-          <span>Contour<input type="checkbox" id="stroke" checked></span>
-          <span>Couleur de contour<input type="color" id="strokeColor" value="#000000"></span>
-          <span>Epaisseur <input type="number" id="radius" value="4" style="width: 2.25em;"></span>
-          <span>Zoom <input type="range" min="0.25" max="5" value="1" step="0.25" id="zoomSlider" onchange="mapZoom(this.value); draw(event);"><span id="zoomValue">1</span>x</span>
+          <div><p>Remplissage</p><input type="checkbox" id="fill" checked></div>
+          <div><p>Couleur de remplissage</p><input type="color" id="fillColor" value="#FFFFFF"></div>
+          <div><p>Contour</p><input type="checkbox" id="stroke" checked></div>
+          <div><p>Couleur de contour</p><input type="color" id="strokeColor" value="#000000"></div>
+          <div><p>Epaisseur </p><input type="number" id="radius" value="4" style="width: 2.25em;"></div>
+          <div><p>Zoom</p><div><input type="range" min="0.25" max="2" value="1" step="0.25" id="zoomSlider" onchange="mapZoom(this.value); draw(event);"></div><p style="width: 4em;"><span id="zoomValue">1</span>x</p></div>
         </div>
       </div>
       <div class="menu" id="menu">
         <form class="" action="" method="">
+          <h3>Nouveau marqueur</h3>
+
           <label for="name">Nom</label>
           <input type="text" name="name" value="" id="formName">
+
+          <div>
+            <label for="offset">Position</label>
+            <input type="number" name="offsetX" id="formOffsetX" disabled>
+            <input type="number" name="offsetY" id="formOffsetY" disabled>
+          </div>
 
           <label for="svg">Code de dessin</label>
           <input type="text" name="svg" id="formSvg" disabled>
@@ -45,8 +53,14 @@
           <label for="content">Contenu</label>
           <textarea name="content" rows="8" cols="80" id="formContent"></textarea>
 
+          <label for="formLored">Afficher le nom</label>
+          <input type="checkbox" name="formLored" id="formLored"></input>
+
+          <label for="formClickable">Clickable</label>
+          <input type="checkbox" name="formClickable" id="formClickable"></input>
+
           <br>
-          <button type="button" name="button" onclick="savePoint()">Enregistrer</button>
+          <button type="button" name="button" onclick="saveMarker()">Enregistrer</button>
           <br>
           <button type="button" name="button" style="background-color: red;" onclick="menuOpen(); isFinishDrawing=false; points=[];">Abandonner</button>
         </form>
@@ -57,6 +71,7 @@
     <svg class="map" id="svgC" onmousemove="draw(event);" onclick="addPoint(event);" xmlns="http://www.w3.org/2000/svg" draggable="false">
     </svg>
     <div class="map" id="map" draggable="false"></div>
+    <div class="background"><p>All rights reserved by Raccoonlab.fr and Raphael Horion</p></div>
     <!-- <canvas id="canvas" width="300" height="300"  onmousemove="detectPointsHover(event)" onkeydown="close(event)"></canvas> -->
     <script type="text/javascript">
       changeTool("move");
