@@ -11,8 +11,8 @@
 	padding: 20px 30px;
 	position: relative;
 	text-decoration: none;
-	 
-	transition: background .4s ease-in-out, 
+
+	transition: background .4s ease-in-out,
 							padding .4s ease-in-out,width 2s;
 }
 .button-with-arrow span {
@@ -51,17 +51,17 @@ body {
 	padding-top: 50px;
 	color: #959595;
 	}
-	
+
 h1, h2, h3, h4, h5, h6 {
 	color: black;
 	}
-	
+
 .feature {
 	background-color: #05c46b;
 	color: #d2dae2;
 	}
-	
-	
+
+
 .article-intro {
     margin-bottom: 25px;
 }
@@ -71,11 +71,11 @@ h1, h2, h3, h4, h5, h6 {
     background-color: goldenrod;
     color: black;
 }
-    
+
 .footer-blurb-item {
     padding: 30px;
     }
- 
+
 .small-print {
 	background-color: #fff;
 	padding: 30px 0;
@@ -126,7 +126,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0;
 }
 .contact-info ul li {
-    font-family: 'Open Sans'!important, sans-serif; 
+    font-family: 'Open Sans'!important, sans-serif;
     font-size: 14px;
     color: #fff;
 }
@@ -183,3 +183,6 @@ h1, h2, h3, h4, h5, h6 {
     padding-right: 40px;
 }
 
+.navbar-right a {
+	    font-size: 3em;
+}

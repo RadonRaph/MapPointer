@@ -211,6 +211,18 @@ function drawMarkers() {
 //
 // }
 
+
+
+function showMarker(id) {
+  var _marker = markers[id];
+
+   document.getElementById("markerName").innerHTML = _marker.name;
+
+   document.getElementById("markerContent").innerHTML = _marker.content;
+  menuOpen();
+}
+
+
 var menuToggle = false;
 function menuOpen(){
   menu = document.getElementById('menu');

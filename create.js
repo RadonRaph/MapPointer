@@ -217,7 +217,9 @@ function draw(e){
 
   var scale = 1/zoom;
   var scale2 = 1/(zoom-1);
-document.getElementById('formSvg').value = svg;
+
+  if(tool != "move")
+  document.getElementById('formSvg').value = svg;
 
   if (isFinishDrawing == true && menuToggle==false){
 
@@ -258,7 +260,25 @@ function getSvgStyle(){
 
 
 
+showMarker = function(id) {
+  var _marker = markers[id];
 
+  document.getElementById("formName").value = _marker.name;
+
+  document.getElementById("formOffsetX").value = _marker.offsetX;
+
+  document.getElementById("formOffsetY").value = _marker.offsetY;
+
+  document.getElementById("formSvg").value = _marker.svg;
+
+  document.getElementById("formContent").value = _marker.content;
+  menuOpen();
+//LATER
+
+  // newMarker.lored = document.getElementById('formLored').checked;
+  //
+  // newMarker.clickable = document.getElementById('formClickable').checked;
+}
 
 
 
