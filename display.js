@@ -158,7 +158,11 @@ function drawMarkers() {
     foo += "," + y;
     foo += ") scale(";
     foo += zoom + "," + zoom;
-    foo += ")'>";
+    foo += ")' ";
+    if (markers[i].clickable == "true")
+    foo += "onclick='showMarker(" + i + ")' class='clickable'";
+
+    foo += ">";
     foo += markers[i].svg;
     foo += "</g>";
 
