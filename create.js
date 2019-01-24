@@ -120,7 +120,7 @@ function draw(e){
         var width = x1 - x2;
         var height = y1 - y2;
 
-        svg = "<rect x='" + x2 + "' y='" + y2+ "' width='" + width + "' height='" + height  + "'" + getSvgStyle() + "/>";
+        svg = "<rect name='svgCircle' zoom='"+ zoom +"' x='" + x2 + "' y='" + y2+ "' width='" + width + "' height='" + height  + "'" + getSvgStyle() + "/>";
       }else if (points.length==2){
         var x1;
         var y1;
@@ -147,7 +147,7 @@ function draw(e){
         var width = x1 - x2;
         var height = y1 - y2;
 
-        svg = "<rect x='" + x2 + "' y='" + y2+ "' width='" + width + "' height='" + height  + "'" + getSvgStyle() + "/>";
+        svg = "<rect name='svgRect' zoom='"+ zoom +"' x='" + x2 + "' y='" + y2+ "' width='" + width + "' height='" + height  + "'" + getSvgStyle() + "/>";
         isFinishDrawing = true;
       }else{
         points = [];
@@ -173,14 +173,14 @@ function draw(e){
         svg += "'" + getSvgStyle() + "/>";
         svgBonus = "<text x='" + posX+10 + "' y='" + posY + "'>Clique droit pour finir</text>";
       }else{
-        svg = "<polyline points='";
+        svg = "<g name='svgPolyline' zoom='"+ zoom +"'" + " marginX='"+ (points[0].getX()) + "' marginY='"+(points[0].getY())+"'><polyline points='";
         for (var i = 0; i < points.length; i++) {
           svg += points[i].getX();
           svg += ",";
           svg += points[i].getY();
           svg += " ";
         }
-        svg += "'" + getSvgStyle() + "/>";
+        svg += "'" + getSvgStyle() + "/></g>";
       }
     }else{
       svgBonus = "<text x='" + (posX+20) + "' y='" + posY + "'>Cliquer pour le premier point</text>";
@@ -190,17 +190,17 @@ function draw(e){
       if (points.length == 1){
         var _x = Math.abs(points[0].getX() - posX);
         var _y = Math.abs(points[0].getY() - posY);
-        var d = Math.round(Math.sqrt(_x + _y)*10);
+        var d = Math.round(Math.sqrt(_x * _x + _y * _y));
+        console.log("pre"+_x + ":"+ _y);
 
-
-        svg += "<circle cx='" + points[0].getX() + "' cy='" + points[0].getY() + "' r='" + d + "'" + getSvgStyle() + "/>";
+        svg += "<circle name='svgCircle' zoom='"+ zoom +"' cx='" + points[0].getX() + "' cy='" + points[0].getY() + "' r='" + d + "'" + getSvgStyle() + "/>";
       }else if (points.length == 2){
-        var _x = Math.abs(points[0].getX() - points[1].getX())*zoom;
-        var _y = Math.abs(points[0].getY() - points[1].getY())*zoom;
-        var d = Math.round(Math.sqrt(_x + _y)*10);
+        var _x = Math.abs(points[0].getX() - points[1].getX());
+        var _y = Math.abs(points[0].getY() - points[1].getY());
+        var d = Math.round(Math.sqrt(_x * _x + _y * _y));
+        console.log("post"+_x + ":"+ _y);
 
-
-        svg += "<circle cx='" + points[0].getX() + "' cy='" + points[0].getY() + "' r='" + d + "'" + getSvgStyle() + "/>";
+        svg += "<circle name='svgCircle' zoom='"+ zoom +"' cx='" + points[0].getX() + "' cy='" + points[0].getY() + "' r='" + d + "'" + getSvgStyle() + "/>";
         isFinishDrawing = true;
       }else{
         points = [];
@@ -216,11 +216,13 @@ function draw(e){
   svgC2.innerHTML += svgBonus;
 
   var scale = 1/zoom;
-  document.getElementById('formSvg').value = svg;
-  document.getElementById('formOffsetX').value = mapOffsetX * scale;
-  document.getElementById('formOffsetY').value = mapOffsetY * scale;
+  var scale2 = 1/(zoom-1);
+document.getElementById('formSvg').value = svg;
 
   if (isFinishDrawing == true && menuToggle==false){
+
+    document.getElementById('formOffsetX').value = mapOffsetX * scale - points[0].getX()*(scale-1);
+    document.getElementById('formOffsetY').value = mapOffsetY * scale - points[0].getY()*(scale-1);
     menuOpen();
 
   }

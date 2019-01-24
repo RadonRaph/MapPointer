@@ -164,7 +164,29 @@ function drawMarkers() {
 
     document.getElementById('svgC').innerHTML += foo;
   }
-    console.log(mapOffsetX);
+  if (document.getElementsByName('svgRect').length > 0){
+    var rects = document.getElementsByName('svgRect');
+    for (var i = 0; i < rects.length; i++) {
+      rects[i].setAttribute("width", rects[i].getAttribute("width") * (1/rects[i].getAttribute("zoom")));
+      rects[i].setAttribute("height", rects[i].getAttribute("height") * (1/rects[i].getAttribute("zoom")));
+    }
+  }
+
+  if (document.getElementsByName('svgCircle').length > 0){
+    var circles = document.getElementsByName('svgCircle');
+    for (var i = 0; i < circles.length; i++) {
+      circles[i].setAttribute("r", circles[i].getAttribute("r") * (1/circles[i].getAttribute("zoom")));
+    }
+  }
+
+
+  if (document.getElementsByName('svgPolyline').length > 0){
+    var polylines = document.getElementsByName('svgPolyline');
+    for (var i = 0; i < polylines.length; i++) {
+      var scale = 1/polylines[i].getAttribute("zoom");
+      polylines[i].setAttribute("transform",  "scale(" + scale + "," + scale + ")");
+    }
+  }
 }
 
 // function detectPointsHover(e) {
