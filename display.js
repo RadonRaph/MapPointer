@@ -5,15 +5,15 @@ map.src = mapUrl;
 var canvas;
 var ctx;
 
-var zoom =1;
+var zoom = 0.3;
 
 var svgC;
 
 var mouseDown = false;
 var mapAnchorX;
 var mapAnchorY;
-var mapOffsetX = 0;
-var mapOffsetY = 0;
+var mapOffsetX = 213;
+var mapOffsetY = 100;
 var markers = [];
 
 class marker {
@@ -57,6 +57,7 @@ function initialize() {
   canvas.style.backgroundImage = "url('"+mapUrl+"')";
   canvas.style.backgroundRepeat = "no-repeat";
   canvas.style.backgroundSize = (map.width * zoom) + "px " + (map.height * zoom) + "px";
+  mapZoom(0.3);
   //svgC = document.getElementById('svgC');
   //svgC.style.width = map.width;
   //svgC.style.height = map.height;
@@ -71,11 +72,11 @@ function initialize() {
 
 function mapZoom(newZoom){
   newZoom = parseFloat(newZoom);
-  if (newZoom < 0.25 || newZoom > 2)
+  if (newZoom < 0.1 || newZoom > 1.5)
   return null;
 
-  zoom = newZoom;
-  document.getElementById('zoomValue').innerHTML = zoom;
+  zoom = Math.round(newZoom*10)/10;
+  document.getElementById('zoomValue').innerHTML = Math.round(zoom*10)/10;
   document.getElementById('zoomSlider').value = zoom;
   canvas.style.backgroundSize = (map.width * zoom) + "px " + (map.height * zoom) + "px";
 
@@ -83,7 +84,7 @@ function mapZoom(newZoom){
 }
 
 function wheelZoom(e){
-  var nZoom = zoom - 0.25*Math.round(e.deltaY/100);
+  var nZoom = zoom - 0.1*Math.round(e.deltaY/100);
   mapZoom(nZoom);
 }
 

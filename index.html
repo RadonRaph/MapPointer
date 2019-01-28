@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
   </head>
   <body onload="initialize();" oncontextmenu=" return false;" onmousedown="mapAnchor(event); mouseDown=true;" onmousemove="mapMove(event);" onmouseup="mouseDown=false;" onmousewheel="wheelZoom(event);">
-    <div class="displayZoom"><div style="width: 4em;"><p>Zoom</p></div><div><input type="range" min="0.25" max="2" value="1" step="0.25" id="zoomSlider" onchange="mapZoom(this.value); draw(event);"></div><p style="width: 4em;"><span id="zoomValue">1</span>x</p></div>
+    <div class="displayZoom"><div style="width: 4em;"><p>Zoom</p></div><div><input type="range" min="0.1" max="1.5" value="1" step="0.1" id="zoomSlider" onchange="mapZoom(this.value); draw(event);"></div><p style="width: 4em;"><span id="zoomValue">1</span>x</p></div>
 
     <div id="points">
 
