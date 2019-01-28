@@ -88,7 +88,7 @@
 
 			 <!-- Search -->
                 <form class="navbar-form navbar-right" role="search" >
-                    <a href="XXX">
+                    <a href="index.html">
                     <i class="fas fa-map-marked-alt"></i></a>
                     <a href="AStations.html">
                     <i class="fas fa-map-pin"></i></a>
@@ -104,7 +104,75 @@
 	<div class="jumbotron feature">
 		<div class="container">
 			<h1>La zone humide de Fécamp</h1>
-			<p>Un diagnostic environnemental et des propositions d'aménagements d'une équipe d'étudiants de l'ISTOM pour la ville de Fécamp   </p>
+			<p>Le suivi écologique de la zone humide de Gohier représente l’un des principaux objectifs de la mission du groupe. En effet, la Mairie de Fécamp a rapidement mis en exergue le besoin de travailler sur cette zone, en ciblant de nombreux enjeux qui y sont directement liés. Les zones humides sont de véritables zones tampons sur le plan écologique et il convient donc de les protéger, en référence au Code (art. 127 LDTR) de l'Environnement (art. L211-1-1). La proximité de la station d’épuration des stations de captage et de forage qui alimentent la ville de Fécamp en eau potable, ainsi que la présence d’équidés sur les parcelles concernées, en font une zone à forte sensibilité. La mission du groupe fut d’analyser la dynamique de l’eau de la zone considérée et de proposer des recommandations dans le but de préserver la ressource en eau mais aussi la zone humide au travers de ses fonctions et de sa biodiversité. Cette étude sert à approfondir et compléter les investigations des années antérieures.   </p>
+            <h2> I. Généralités sur les zones humides </h2>
+            <h3>I.1. Définition </h3>
+           <p> Le droit français avec l’article L.211-1 du code de l’environnement (LEGIFRANCE a, 2006), définit les zones humides comme étant des étendues<i>« exploitées ou non, habituellement inondées ou gorgées d’eau douce, salée ou saumâtre de façon permanente ou temporaire ; la végétation, quand elle existe, y est dominée par des plantes hygrophiles, pendant au moins une partie de l’année ».</i></p>
+
+           <p>Aujourd’hui, suite à une note technique du 23 juin 2017, les zones humides se caractérisent suivant deux critères cumulatifs (Travaux publics, 2017) :</p>
+           <p>
+  - <b>Critère botanique :</b> <i>« la végétation, quand elle existe, y est dominée par des plantes hygrophiles pendant au moins une partie de l’année » ;</p></i>
+   <p>- <b>Critère pédologique :</b><i> « terrains, exploités ou non, habituellement inondés ou gorgés d’eau douce, salée ou saumâtre de façon permanente ou temporaire ».</i> 
+ 
+</p>
+<h3>I.2. Rôles majeurs d’une zone humide</h3>
+
+<p>Les zones humides sont des espaces de transition entre la terre et l’eau et constituent un patrimoine exceptionnel en raison de leur richesse biologique, des fonctions et des services qu’elles remplissent (SAGE Mayenne, 2012).</p> 
+
+<p>Elles accomplissent ainsi quatre rôles majeurs (Syndicat Mixte du Bassin Versant des Lacs du Born, 2018) (Douville et al, 2016), qui sont illustrés dans la figure ci-dessous</p> 
+<p></p>
+<img src="zh1.png" alt="Rôles de la zone humide (Château-Landon – Office de tourisme, 2019" />
+<p></p>
+
+<p><b>-   Rôle hydrologique</b> en stockant l’eau telle une éponge en période de crue et en la restituant progressivement au cours d’eau lors de l’étiage ;</p>
+<p><b>-   Rôle physique et biogéochimique</b> par une filtration physique qui retient les matières en suspension et les polluants, ainsi que par une filtration biologique où interviennent des processus de dénitrification et de déphosphatation ;</p>
+<p><b>-   Rôle écologique </b>ou de « réservoir de biodiversité » qui permet d’abriter 30% des espèces végétales remarquables et menacées mais également 50% des espèces d’oiseaux, ce qui permet un maintien de la biodiversité tant floristique que faunistique ;</p>
+<p><b>-   Rôle socio-économique</b> en étant le support de nombreux usages et activités grâce à sa forte productivité biologique, elle constitue une ressource importante pour la production agricole ou piscicole mais peut également constituer un milieu à fort potentiel écotouristique.</p>
+
+ <h3>I.3. Localisation </h3> 
+ <p>La zone humide étudiée se trouve sur la commune de Fécamp. Elle se situe à la jonction entre la Valmont et la Ganzeville. La zone humide est longée par la voie verte, qui est une ancienne voie de chemin de fer, réaménagée l’année dernière. La zone humide a une végétation importante et diverse. En effet, nous avons constaté la présence d’arbre juvénile sur une partie de la zone humide. Cette présence s’explique par la présence d’une forêt à proximité de la zone humide. </p>
+
+<a href="index.html"> <img src="zh2.png" href="index.html"alt="Figure 22 : La zone humide de Fécamp et ses environs (TRAME, 2018)" /></a>
+
+<!--test anim java choose-->
+<p></p>
+
+<p><select id="monDropdown" onchange="updateDropdown();">
+  <option value="option1">En savoir plus sur : l'historique </option>
+  <option value="option2">Les enjeux et objectifs </option>
+ 
+</select>
+ 
+<img id="monImg" src="" alt="">
+<div id="maDiv"></div>
+<p id="monParagraphe"></p>
+ 
+<script type="text/javascript">
+  function updateDropdown() {
+    if (document.getElementById("monDropdown").value == "option1"){
+      document.getElementById("maDiv").innerHTML = "<h2>Historique des parcelles d’étude </h2> <p>Pour l’analyse historique de la zone humide, les données proposées par le site Géoportail ont été utilisées : d’une part la cartographie de l'Etat-Major français entre 1820 et 1860, et d’autre part les photographies aériennes historiques référencées sur le site de 1945 à nos jours.
+Au XIXe siècle, la zone humide se trouvait dans un fond de vallée peu habité de la Valmont, où les terres étaient cultivées. Le fond de vallée alluviale y facilitait certainement la pratique d’activités agricoles et d’élevages.
+En 1961, des activités de construction ou d’exploitation des sols semblent débuter à l’emplacement actuel de la station d’épuration. Mais c’est en 1973 que de réels bouleversements sont visibles. Les constructions semblent terminées ou en phase de l’être au niveau du centre équestre et des infrastructures sportives. De plus, les travaux d’aménagements globaux du captage sont en train d’être réalisés. Les travaux des gravières ont été grandement étendus, de nouveaux bassins ont été créés et les habitations se multiplient autour des axes routiers alentours à la zone humide. Les décennies suivantes sont marquées par l’apparition des bassins tels que nous les connaissons aujourd’hui, avec la construction de la station d’épuration entre 1985 et 1998, une multitude d’habitats construits, le développement des voiries et le recul en amont de la vallée des surfaces cultivables.
+Enfin, les travaux récents au niveau de la zone humide concernent l’aménagement de la voie verte. L’ancienne voie ferrée a été réaménagée en vélo-route et longe ainsi la zone humide (TRAME, 2017).  
+</p>";
+     
+    }else if(document.getElementById("monDropdown").value == "option2"){
+      document.getElementById("maDiv").innerHTML = "<h2>Enjeux et objectifs de l’étude </h2><p>La zone humide est localisée à proximité du captage de Gohier. Le captage de Gohier est l’unique source d’eau potable de la ville. Cette source se doit donc d’être protégée pour éviter une pollution. Au niveau législatif, cette source est protégée afin de la préserver contre les pollutions accidentelles, régulières ou ponctuelles. Il existe trois périmètres de protection mis en place :
+- Périmètre de Protection Immédiat (PPI) : zone clôturée appartenant à une collectivité publique (commune de Fécamp dans le cas du captage de Gohier) où tous les usages sont interdits excepté les usages liés à l’exploitation de la ressource pour éviter les pollutions sur site.
+- Périmètre de Protection Rapproché (PPR) :  zone plus étendue où les usages sont très limités pour éviter les pollutions de la ressource et où les installations ou infrastructures sont soumises à des dérogations.
+- Périmètre de Protection Eloigné (PPE) :  zone facultative (concerne généralement le Bassin d’Alimentation de Captage (BAC) en partie ou dans son ensemble) pour éviter les pollutions possibles directes ou indirectes de la ressource (Eau France e, 2017).
+La zone humide de Fécamp se trouve dans le périmètre de protection rapproché (PPR) et immédiat (PPI). En parallèle, la zone humide possède des caractéristiques naturelles de dépollution (se référer partie I.2. Rôles majeurs d’une zone humide). Il y a un double enjeu dans la préservation de ce milieu.  La préservation de la ressource en eau elle-même mais aussi de la zone humide au travers de ses fonctions et de sa biodiversité.
+Enfin, le long de cette zone a été réalisée une voie verte. La population peut donc venir se balader le long de la zone humide et profiter de son cadre et de sa richesse écologique. La zone humide représente donc un enjeu environnemental, économique et social, qui implique aujourd’hui d’être préserver et valoriser.
+Depuis plusieurs années les étudiants de l’ISTOM travaillent conjointement avec la mairie de Fécamp sur la thématique de la zone humide. Les années précédentes, les étudiants ont œuvré pour sa restauration, sa préservation et sa valorisation. 
+Dans un premier temps, l’objectif de cette année est de compléter l’étude de la dynamique végétale de la zone. L’étude de cette dynamique nous permettra par la suite de pouvoir recommander des mesures afin de conserver la zone humide. Dans un deuxième temps nous analyserons le comportement de l’eau dans le sol pour observer son évolution au cours du temps. Cette observation nous permettra entre autres, d’étudier l’évolution des parcelles ayant été piétinées par les chevaux et celles impactées par la présence nouvelle d’arbres juvéniles. Enfin, des propositions de valorisation de la zone humide seront abordées en continuité avec les années précédentes.  
+</p>";
+     
+
+  }
+</script></p>
+
+
+
 			<p><a class="btn btn-primary" href="#">Nous contacter ?</a></p>
 		</div>
 	</div>
@@ -117,7 +185,1242 @@
         <div class="container">
             <h1>Protocole</h1>
             <p>Ce qu'on a fait avec un calendrier des photos du concret + méthodo   </p>
-        
+        <h2>
+    <b>Analyse floristique</b>
+</h2>
+<p>
+    Afin d’étudier la dynamique végétale de la zone humide il a été décidé de
+    réaliser un inventaire phytosociologique sur la zone, orienté cette année
+    pour mettre en évidence la dynamique phytosociale et notamment la
+    régénération arborée de la zone herbacée. Pour ce faire, la technique du
+    transect a été utilisée avec spécifiquement des distances et une superficie
+    au regard des objectifs de compréhension de la dynamique de régénération
+    arborée.
+</p>
+<p>
+    Deux transects ont été réalisés en partant de la voie verte en direction de
+    la forêt (Figure X) et spécifique à l’endroit où il existe une certaine
+    avancée de la forêt sur la zone herbacée.
+</p>
+<p align="center">
+    <a name="_Toc536369798">Figure </a>
+    23 : Carte localisant les transects (TRAME, 2018)
+</p>
+<h3>
+    <a name="_Toc536369756"><b>III.1. Méthodologie</b></a>
+    <b></b>
+</h3>
+<p>
+    Le transect est une méthode d’Inventaire Biologique Rapide (IBR), elle
+    fournit des informations concernant la physionomie de la végétation.
+</p>
+<p>
+    Pour réaliser un transect, tendre une corde sur une longueur de 20m, puis
+    de part et d’autre de la corde délimiter une bande d’1m de large qui
+    correspond à la zone où l’on dénombre la flore, cela forme un rectangle de
+    20m de long et de 2m de large. Découper ensuite ce rectangle en segments
+    d’1m afin de faciliter la détermination (Figure 22).
+</p>
+<p align="center">
+    <a name="_Toc536369799">Figure </a>
+    24 : Schéma du transect réalisé (TRAME, 2018)
+</p>
+<p>
+    Procéder ensuite au dénombrement de la flore sur chaque bande d’1m sur 1m
+    de part et d’autre de la corde. Il faut pour cela déterminer dans un
+    premier temps l’espèce, cela peut se faire directement sur le terrain avec
+    l’aide du logiciel PlantNet, facilement téléchargeable sur un smartphone
+    (Pl@ntNet, 2018). Si l’identification s’avère difficile, prélever un
+    échantillon dans un sachet plastique étiqueté et le déterminer par la suite
+    à l’aide d’une flore. Lors de ces inventaires les flores de <i>Bonnier </i>
+de 1985, de <i>Dumé </i>de 2018<i>., </i>de<i> Lambion</i> de 1999 et    <i> </i>de <i>Tison</i> de 2014 ont été utilisées afin de déterminer les
+    espèces.
+</p>
+<p>
+    Parallèlement pour chaque espèce, plusieurs paramètres sont à déterminer
+    in-situ :
+</p>
+<p>
+    - Le <b>stade phénologique</b> (floraison, fructification, végétation ou
+    fanaison)
+</p>
+<p>
+    - L’<b>abondance-dominance selon Braun-Blanquet</b>
+</p>
+<p>
+    C’est une échelle des coefficients d’abondance-dominance (de recouvrement)
+    de Braun-Blanquet (Figure 23).
+</p>
+<p>
+    L’abondance correspond au nombre d’individus qui forme la population de
+    l’espèce dans le relevé. La dominance quant à elle, est le recouvrement de
+    l’ensemble des individus d’une espèce donnée, comme la projection verticale
+    de leur appareil végétatif aérien sur le sol.
+    <br/>
+    Le coefficient d’abondance-dominance est estimé visuellement. L'échelle
+    habituellement utilisée est la suivante (Biodis, 2015) :
+</p>
+<p>
+    v 5 : Nombre quelconque d’individus – recouvrement &gt; 3/4 de la surface
+    de référence (&gt; 75%) ;
+</p>
+<p>
+    v 4 : Recouvrement entre 1/2 et 3/4 (50–75% de la surface de référence) ;
+</p>
+<p>
+    v 3 : Recouvrement entre 1/4 et 1/2 (25–50% de la surface de référence) ;
+</p>
+<p>
+    v 2 : Recouvrement entre 1/20 et 1/4 (5–25% de la surface de référence) ;
+</p>
+<p>
+    v 1 : Recouvrement &lt; 1/20, ou individus dispersés à couvert jusqu’à 1/20
+    (5%) ;
+</p>
+<p>
+    v + : Peu d’individus, avec un très faible recouvrement ;
+</p>
+<p>
+    v r : Rare;
+</p>
+<p>
+    v i : Individu.
+</p>
+<p align="center">
+    <a name="_Toc536369800">Figure </a>
+    25 : Coefficient d’abondance-dominance (recouvrement) de Braun-Blanquet
+    (Biodis, 2015)
+</p>
+<p>
+    - La <b>sociabilité</b>
+</p>
+<p>
+    Cette valeur d’après Braun-Blanquet (1951), désigne le degré de dispersion
+    spatiale des individus (Figure 24).
+</p>
+<p>
+    ❖ 5 : Population presque pure, importante ;
+</p>
+<p>
+    ❖ 4 : Petites colonies nombreuses ou formant un large tapis ;
+</p>
+<p>
+    ❖ 3 : Population formant des petits groupes ou des coussins ;
+</p>
+<p>
+    ❖ 2 : Agrégats ou groupes denses ;
+</p>
+<p>
+    ❖ 1 : Croissance solitaire.
+</p>
+<p align="center">
+    <a name="_Toc536369801">Figure </a>
+    26 : Sociabilité (Biodis, 2015)
+</p>
+<p>
+    Enfin les paramètres suivants peuvent être obtenus ex-situ :
+</p>
+<p>
+    - Le <b>nom scientifique</b>
+</p>
+<p>
+    - Le <b>type biologique</b> qui est déterminé par la morphologie générale
+    de l’espèce, qui exprime en partie son adaptation à l’environnement. Il
+    existe 5 types de végétaux terrestres (Davoust P, 2018) :
+</p>
+<p>
+    ❖ Phanérophyte : feuilles tombent ou non, les zones les plus sensibles
+    (méristèmes) sont protégées par des structures temporaires de résistance
+    (bourgeons), au-dessus de 80cm du sol ;
+</p>
+<p>
+    ❖ Chaméphyte : feuilles tombent ou non, les bourgeons les plus bas
+    bénéficient de la protection de la neige, entre 0 et 80cm du sol ;
+</p>
+<p>
+    ❖ Géophyte (ou cryptophyte) : passent la période froide protégées par le
+    sol, la partie aérienne meurt ;
+</p>
+<p>
+    ❖ Thérophyte (ou plante annuelles) : passent l’hiver à l’état de graine,
+    l’ensemble de la plante meurt ;
+</p>
+<p>
+    ❖ Hémicryptophyte : stratégie mixte qui combine celle des géophytes et des
+    chaméphytes, le bourgeon est à moitié caché au niveau du sol.
+</p>
+<p>
+    Les types biologiques ont été déterminés à l’aide du réseau collaboratif
+    Tela Botanica (Tela Botanica, 2018).
+</p>
+<h3>
+    <a name="_Toc536369757"><b>III.2. Résultats et discussion</b></a>
+    <b></b>
+</h3>
+<p>
+    Les investigations floristiques ont permis d’identifier pour le premier
+    transect 19 espèces dont 2 espèces ligneuses et 17 espèces herbacées.
+</p>
+<p>
+    Les espèces de la strate ligneuse sont réparties dans 2 genres, regroupés
+    en 2 familles. Tandis que les espèces de la strate herbacée sont réparties
+    dans 15 genres qui sont regroupés en 15 familles (Tableau 3).
+</p>
+<p align="center">
+    <a name="_Toc536351747">Tableau </a>
+    3 : Richesse spécifique du Transect 1 (TRAME, 2018)
+</p>
+<table border="1" cellspacing="0" cellpadding="0" width="558">
+    <tbody>
+        <tr>
+            <td width="121" valign="top">
+                <p>
+                    <b>Nom vernaculaire</b>
+                </p>
+            </td>
+            <td width="172" valign="top">
+                <p>
+                    <b>Nom scientifique</b>
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    <b>Ligneuse/Herbacée</b>
+                </p>
+            </td>
+            <td width="123" valign="top">
+                <p>
+                    <b>Famille</b>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="121" valign="top">
+                <p>
+                    Cardère
+                </p>
+            </td>
+            <td width="172" valign="top">
+                <p>
+                    <i>Dipsacus</i>
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    Herbacée
+                </p>
+            </td>
+            <td width="123" valign="top">
+                <p>
+                    Dipsacaceae
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="121" valign="top">
+                <p>
+                    Chardon
+                </p>
+            </td>
+            <td width="172" valign="top">
+                <p>
+                    <i>Carduus crispus</i>
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    Herbacée
+                </p>
+            </td>
+            <td width="123" valign="top">
+                <p>
+                    Asteraceae
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="121" valign="top">
+                <p>
+                    Doucette
+                </p>
+            </td>
+            <td width="172" valign="top">
+                <p>
+                    <i>Epilobium angustifolium</i>
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    Herbacée
+                </p>
+            </td>
+            <td width="123" valign="top">
+                <p>
+                    Onagraceae
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="121" valign="top">
+                <p>
+                    Eupatoire
+                </p>
+            </td>
+            <td width="172" valign="top">
+                <p>
+                    <i>Eupatorium cannabimm</i>
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    Herbacée
+                </p>
+            </td>
+            <td width="123" valign="top">
+                <p>
+                    Asteraceae
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="121" valign="top">
+                <p>
+                    Gaillet
+                </p>
+            </td>
+            <td width="172" valign="top">
+                <p>
+                    <i>Galium uliginosum</i>
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    Herbacée
+                </p>
+            </td>
+            <td width="123" valign="top">
+                <p>
+                    Rubiaceae
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="121" valign="top">
+                <p>
+                    Iris jaune
+                </p>
+            </td>
+            <td width="172" valign="top">
+                <p>
+                    <i>Iris pseudacorus</i>
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    Herbacée
+                </p>
+            </td>
+            <td width="123" valign="top">
+                <p>
+                    Iridaceae
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="121" valign="top">
+                <p>
+                    Jonc plein
+                </p>
+            </td>
+            <td width="172" valign="top">
+                <p>
+                    <i>Juncus effusus</i>
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    Herbacée
+                </p>
+            </td>
+            <td width="123" valign="top">
+                <p>
+                    Juncaceae
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="121" valign="top">
+                <p>
+                    Jonc vide
+                </p>
+            </td>
+            <td width="172" valign="top">
+                <p>
+                    <i>Juncus acutiflorus</i>
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    Herbacée
+                </p>
+            </td>
+            <td width="123" valign="top">
+                <p>
+                    Juncaceae
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="121" valign="top">
+                <p>
+                    Massette
+                </p>
+            </td>
+            <td width="172" valign="top">
+                <p>
+                    <i>Typha latifolia</i>
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    Herbacée
+                </p>
+            </td>
+            <td width="123" valign="top">
+                <p>
+                    Typhaceae
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="121" valign="top">
+                <p>
+                    Menthe aquatique
+                </p>
+            </td>
+            <td width="172" valign="top">
+                <p>
+                    <i>Mentha aquatica L.</i>
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    Herbacée
+                </p>
+            </td>
+            <td width="123" valign="top">
+                <p>
+                    Lamiaceae
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="121" valign="top">
+                <p>
+                    Menthe
+                </p>
+            </td>
+            <td width="172" valign="top">
+                <p>
+                    <i>Mentha suavolus</i>
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    Herbacée
+                </p>
+            </td>
+            <td width="123" valign="top">
+                <p>
+                    Lamiaceae
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="121" valign="top">
+                <p>
+                    Ortie
+                </p>
+            </td>
+            <td width="172" valign="top">
+                <p>
+                    <i>Urtica urens </i>
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    Herbacée
+                </p>
+            </td>
+            <td width="123" valign="top">
+                <p>
+                    Urticaceae
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="121" valign="top">
+                <p>
+                    Renoncule
+                </p>
+            </td>
+            <td width="172" valign="top">
+                <p>
+                    <i>Ranunculus repens</i>
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    Herbacée
+                </p>
+            </td>
+            <td width="123" valign="top">
+                <p>
+                    Ranunculaceae
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="121" valign="top">
+                <p>
+                    Ronce
+                </p>
+            </td>
+            <td width="172" valign="top">
+                <p>
+                    <i>Rubus fruticosus</i>
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    Semi-ligneuse à ligneuse
+                </p>
+            </td>
+            <td width="123" valign="top">
+                <p>
+                    Rosaceae
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="121" valign="top">
+                <p>
+                    Roseau
+                </p>
+            </td>
+            <td width="172" valign="top">
+                <p>
+                    <i>Phragmite australis</i>
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    Herbacée
+                </p>
+            </td>
+            <td width="123" valign="top">
+                <p>
+                    Poaceae
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="121" valign="top">
+                <p>
+                    Rumex
+                </p>
+            </td>
+            <td width="172" valign="top">
+                <p>
+                    <i>Rumex crispus</i>
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    Herbacée
+                </p>
+            </td>
+            <td width="123" valign="top">
+                <p>
+                    Polygonaceae
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="121" valign="top">
+                <p>
+                    Salicaire commune
+                </p>
+            </td>
+            <td width="172" valign="top">
+                <p>
+                    <i>Lythrum salicaria</i>
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    Herbacée
+                </p>
+            </td>
+            <td width="123" valign="top">
+                <p>
+                    Lytracea
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="121" valign="top">
+                <p>
+                    Saule marsault
+                </p>
+            </td>
+            <td width="172" valign="top">
+                <p>
+                    <i>Salix caprea</i>
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    Ligneuse
+                </p>
+            </td>
+            <td width="123" valign="top">
+                <p>
+                    Salicaceae
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="121" valign="top">
+                <p>
+                    Scrofulaire
+                </p>
+            </td>
+            <td width="172" valign="top">
+                <p>
+                    <i>Scrophularia auriculata</i>
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    Herbacée
+                </p>
+            </td>
+            <td width="123" valign="top">
+                <p>
+                    Scrophulariaceae
+                </p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    Pour le second transect 17 espèces dont 2 espèces ligneuses, 14 espèces
+    herbacées et 1 bryophyte ont été inventoriées (Tableau 4).
+</p>
+<p align="center">
+    <a name="_Toc536351748">Tableau </a>
+    4 : Richesse spécifique du Transect 2 (TRAME, 2018)
+</p>
+<table border="1" cellspacing="0" cellpadding="0" width="560">
+    <tbody>
+        <tr>
+            <td width="151" valign="top">
+                <p>
+                    <b>Nom vernaculaire</b>
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    <b>Nom scientifique</b>
+                </p>
+            </td>
+            <td width="125" valign="top">
+                <p>
+                    <b>Ligneuse/Herbacée</b>
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    <b>Famille</b>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="151" valign="top">
+                <p>
+                    Cirse
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    <i>Cirsium palustre</i>
+                </p>
+            </td>
+            <td width="125" valign="top">
+                <p>
+                    Herbacée
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    Asteraceae
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="151" valign="top">
+                <p>
+                    Doucette
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    <i>Epilobium angustifolium</i>
+                </p>
+            </td>
+            <td width="125" valign="top">
+                <p>
+                    Herbacée
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    Onagraceae
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="151" valign="top">
+                <p>
+                    Eupatoire
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    <i>Eupatorium cannabinum</i>
+                </p>
+            </td>
+            <td width="125" valign="top">
+                <p>
+                    Herbacée
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    Asteraceae
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="151" valign="top">
+                <p>
+                    Iris jaune
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    <i>Iris pseudacorus</i>
+                </p>
+            </td>
+            <td width="125" valign="top">
+                <p>
+                    Herbacée
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    Iridaceae
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="151" valign="top">
+                <p>
+                    Jonc plein
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    <i>Juncus effusus</i>
+                </p>
+            </td>
+            <td width="125" valign="top">
+                <p>
+                    Herbacée
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    Juncaceae
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="151" valign="top">
+                <p>
+                    Jonc vide
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    <i>Juncus acutiflorus</i>
+                </p>
+            </td>
+            <td width="125" valign="top">
+                <p>
+                    Herbacée
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    Juncaceae
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="151" valign="top">
+                <p>
+                    Massette
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    <i>Typha</i>
+                </p>
+            </td>
+            <td width="125" valign="top">
+                <p>
+                    Herbacée
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    Typhaceae
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="151" valign="top">
+                <p>
+                    Menthe aquatique
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    <i>Mentha aquatica L.</i>
+                </p>
+            </td>
+            <td width="125" valign="top">
+                <p>
+                    Herbacée
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    Lamiaceae
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="151" valign="top">
+                <p>
+                    Mousse
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    <i>Bryophyta</i>
+                </p>
+            </td>
+            <td width="125" valign="top">
+                <p>
+                    /
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    Shagnidée
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="151" valign="top">
+                <p>
+                    Nerprun
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    <i>Rhamnus cathartica L.</i>
+                </p>
+            </td>
+            <td width="125" valign="top">
+                <p>
+                    Arbuste
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    Rhamnaceae
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="151" valign="top">
+                <p>
+                    Ortie
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    <i>Urtica urens </i>
+                </p>
+            </td>
+            <td width="125" valign="top">
+                <p>
+                    Herbacée
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    Urticaceae
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="151" valign="top">
+                <p>
+                    Oseille/Rumex
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    <i>Rumex crispus</i>
+                </p>
+            </td>
+            <td width="125" valign="top">
+                <p>
+                    Herbacée
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    Polygonaceae
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="151" valign="top">
+                <p>
+                    Oseille à feuilles obtuses
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    <i>Rumex obtusifolius L.</i>
+                </p>
+            </td>
+            <td width="125" valign="top">
+                <p>
+                    Herbacée
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    Polygonaceae
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="151" valign="top">
+                <p>
+                    Renoncule
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    <i>Ranunculus repens</i>
+                </p>
+            </td>
+            <td width="125" valign="top">
+                <p>
+                    Herbacée
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    Ranunculaceae
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="151" valign="top">
+                <p>
+                    Ronce
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    <i>Rubus fruticosus</i>
+                </p>
+            </td>
+            <td width="125" valign="top">
+                <p>
+                    Ligneuse
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    Rosaceae
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="151" valign="top">
+                <p>
+                    Roseau
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    <i>Phragmite australis</i>
+                </p>
+            </td>
+            <td width="125" valign="top">
+                <p>
+                    Herbacée
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    Poaceae
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="151" valign="top">
+                <p>
+                    Saule marsault
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    <i>Salix caprea</i>
+                </p>
+            </td>
+            <td width="125" valign="top">
+                <p>
+                    Ligneuse
+                </p>
+            </td>
+            <td width="142" valign="top">
+                <p>
+                    Salicaceae
+                </p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    Ainsi au total, 23 espèces ont été recensées, dont 2 ligneuses, 20
+    herbacées et 1 bryophyte.
+    <br/>
+    Il est intéressant de souligner que les espèces ligneuses présentes sont
+    les mêmes sur les deux transects (ronce et saule marsault). Alors que
+    certaines espèces herbacées ne sont présentes que sur l’un des transects,
+    comme la patience à feuilles obtuses, le nerprun, le cirse, présentent
+    uniquement sur le second transect ; tout comme le gaillet ou la cardère
+    pour le transect 1.
+    <br/>
+    Par ailleurs, la présence de jeunes plants d’Alnus (aulne glutineux) mais
+    non présents sur les transects a été remarqué dans la zone humide (du fait
+    d’un taux de régénération moins fort que le saule). Ils contribueraient
+    aussi à la fermeture future de la zone herbacée par ces ligneux
+</p>
+<p>
+    En comparant avec les années précédentes le nombre d’espèces inventoriées
+    est approximativement le même que l’année précédente mais est inférieur aux
+    années 2015 et 2016 (Tableau 5).
+</p>
+<p align="center">
+    <a name="_Toc536351749">Tableau </a>
+    5 : Nombre d’espèces inventoriées en fonction des années (TRAME, 2018)
+</p>
+<table border="1" cellspacing="0" cellpadding="0" width="602">
+    <tbody>
+        <tr>
+            <td width="301" valign="top">
+                <p>
+                    Année
+                </p>
+            </td>
+            <td width="301" valign="top">
+                <p>
+                    Nombre d’espèces inventoriées
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="301" valign="top">
+                <p>
+                    2015
+                </p>
+            </td>
+            <td width="301" valign="top">
+                <p>
+                    35
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="301" valign="top">
+                <p>
+                    2016
+                </p>
+            </td>
+            <td width="301" valign="top">
+                <p>
+                    52
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="301" valign="top">
+                <p>
+                    2017
+                </p>
+            </td>
+            <td width="301" valign="top">
+                <p>
+                    23
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="301" valign="top">
+                <p>
+                    2018
+                </p>
+            </td>
+            <td width="301" valign="top">
+                <p>
+                    24
+                </p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    Cette différence peut provenir du fait qu’en 2015 et 2016 l’inventaire ait
+    été réalisé sur trois endroits différents (contre deux cette année) et
+    c’est la technique de l’aire minimale qui avait été utilisée. Le nombre de
+    transects et les dimensions des transects sont moindres cette année en
+    comparaison de ceux des autres années par le fait d’une volonté de mettre
+    en évidence la dynamique d’eutrophisation de la zone herbacée par les
+    espèces arbustives.
+</p>
+<p>
+    Par ailleurs, cela peut indiquer une tendance de certaines espèces à
+    prendre le dessus sur d’autres.
+    <br/>
+    En effet, si on regarde les indices d’abondance-dominance et de
+    sociabilité, on remarque que les espèces comme l’ortie, l’iris jaune, la
+    renoncule ou encore la menthe aquatique sont très présentes et occupent
+    beaucoup d’espace. Tandis que des espèces comme l’épilobe, le nerprun ou le
+    cirse se font beaucoup plus éparse, voire n’apparaissent plus à certains
+    endroits.
+</p>
+<p>
+    Des espèces ligneuses comme la ronce et le saule marsault commencent en
+    revanche à apparaître.
+    <br/>
+    La partie arborée de la zone humide commencerait-elle à envahir
+    progressivement la partie herbacée ?
+</p>
+<p>
+    La compréhension de cette dynamique et surtout l’adaptation des espèces à
+    l’environnement passent tout d’abord par une analyse des types biologiques
+    des espèces présentes.
+</p>
+<p>
+    L’analyse des types biologiques de la strate herbacée (Figure 25), montre
+    une prédominance pour les plantes hémicryptophytes (62%) puis pour les
+    plantes géophytes (29%). Ces deux types biologiques ont relativement les
+    mêmes stratégies d’adaptation. Elles passent l’hiver protégées dans le sol
+    ou au niveau du sol par la litière (Annexe 2).
+</p>
+<p>
+    Tandis que la strate ligneuse est représentée de manière identique par les
+    types biologiques hémicryptophytes et phanérophyte (50% chacun).
+</p>
+<p>
+    Ici ce sont deux stratégies différentes, comme expliqué précédemment les
+    hémicryptophytes ont leurs bourgeons au niveau du sol, alors que les
+    phanérophytes sont des plantes ayant les bourgeons situés au-dessus de 80
+    cm, qui peuvent perdre leurs feuilles et possèdent des bourgeons.
+</p>
+<p>
+    Dans la strate ligneuse l’espèce correspondante au type biologique
+    phanérophyte est le saule marsault. Les autres espèces entrent donc en
+    compétition avec lui pour l’accès à la ressource et à la lumière.
+    <br/>
+    En effet le saule possède d’une part des racines qui peuvent aller chercher
+    profondément les nutriments dans le sol. D’autre part il a une cime plus
+    haute qui diminue l’accès à la lumière pour les autres espèces.
+</p>
+<p align="center">
+    <a name="_Toc536369802">Figure </a>
+    27 : Spectres biologiques moyens de la strate herbacée pour l’ensemble des
+    transects en fonction de la richesse spécifique (nombre d’espèces) (TRAME,
+    2018)
+</p>
+<p align="center">
+    <i> </i>
+    <i></i>
+</p>
+<p align="center">
+    <a name="_Toc536369803">Figure </a>
+    28 : Spectres biologiques moyens de la strate ligneuse pour l’ensemble des
+    transects en fonction de la richesse spécifique (nombre d’espèces) (TRAME,
+    2018)
+</p>
+<p>
+    Cela peut ainsi confirmer l’hypothèse précédente concernant l’avancée de la
+    zone arborée sur celle herbacée. Si la proportion de saule devient trop
+    importante, la diversité floristique de la zone humide peut diminuer, son
+    rôle de zone tampon et sa physionomie passer de l’état herbacé (espace
+    ouvert) à un état arboré (espace fermé).
+</p>
+<p>
+    C’est pourquoi il est important de s’intéresser aux espèces recensées afin
+    de vérifier si elles sont bien indicatrices de zone humide (notion
+    d’appartenance au cortège des plantes de la zone humide) et si leur
+    proportion diminue ou augmente en fonction des années.
+</p>
+<p>
+    D’après la table indicatrice des zones humides de l’arrêté du 24 juin 2008
+    précisant les critères de définition et de délimitation des zones humides
+    en application des articles L. 214-7-1 et R. 211-108 du code de
+l'environnement (LEGIFRANCE c), 75% des espèces recensées (Tableaux 3 et 4)    <i> </i>sont des espèces indicatrices de zone humide.
+</p>
+<p>
+    Parmi ces espèces le saule est une espèce indicatrice de zone humide.
+    L’augmentation de ces individus ne modifierai pas le statut de zone humide
+    mais impacterai sa physionomie.
+</p>
+<p>
+    Pour prendre une décision concernant la gestion de cette zone humide, de
+    nouvelles analyses floristiques couplées avec des analyses faunistiques
+    devraient être réalisées sur différentes saisons notamment en période
+    printanière et estivale afin de se rendre compte de manière plus précise de
+    la dynamique de la zone humide et de son possible devenir. En effet la
+    période début novembre où ont été réalisés les relevés n’est pas la plus
+    propice pour identifier la flore (beaucoup de plantes fanées ou disparues)
+    et la faune (beaucoup d’espèces ont déjà migrées ou en stade
+    d’hibernation).
+</p>
+<br clear="all"/>
         </div>
     </div>
 
