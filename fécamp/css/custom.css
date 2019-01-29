@@ -186,3 +186,17 @@ h1, h2, h3, h4, h5, h6 {
 .navbar-right a {
 	    font-size: 3em;
 }
+
+
+.tabcenter {
+   margin-left:auto;
+   margin-right:auto;
+}
+.images_istom {
+width:100px;
+height:60px;
+}
+.images_fecamp {
+width:112px;
+height:112x;
+}
